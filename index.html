@@ -3,129 +3,568 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pre-test: Present Perfect Simple Tense (ม.6)</title>
+  <title>Tense Quest Academy • Pre-test Present Perfect Simple (ม.6)</title>
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN สำหรับกราฟในหน้า Admin -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Google Fonts: Fredoka (ภาษาอังกฤษสไตล์การ์ตูน) + Prompt (ภาษาไทยอ่านง่าย) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
   <style>
+    :root {
+      --ink: #1e1b4b;
+      --sky-top: #38bdf8;
+      --sky-mid: #7dd3fc;
+      --sky-bot: #e0f2fe;
+      --sun: #fbbf24;
+      --coral: #fb7185;
+      --mint: #34d399;
+      --royal: #4f46e5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Prompt', 'Plus Jakarta Sans', sans-serif;
-      background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 50%, #f0f9ff 100%);
+      font-family: 'Prompt', 'Fredoka', sans-serif;
+      background: linear-gradient(180deg, #38bdf8 0%, #60a5fa 32%, #a5f3fc 68%, #fef3c7 100%);
+      background-attachment: fixed;
+      color: var(--ink);
       min-height: 100vh;
+      overflow-x: hidden;
     }
-    .font-en { font-family: 'Plus Jakarta Sans', 'Prompt', sans-serif; }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(226, 232, 240, 0.9);
+
+    .font-comic {
+      font-family: 'Fredoka', 'Prompt', sans-serif;
     }
-    .option-card {
-      transition: all 0.18s ease;
+
+    /* ลายจุด Comic Halftone เบาๆ ทั่วฉากหลัง */
+    .halftone-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: radial-gradient(rgba(30, 27, 75, 0.08) 1.5px, transparent 1.5px);
+      background-size: 20px 20px;
     }
-    .option-card:hover {
-      border-color: #6366f1;
-      background-color: #eef2ff;
+
+    /* ก้อนเมฆการ์ตูนลอยเคลื่อนไหว */
+    .sky-decor {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
     }
-    .option-radio:checked + .option-card {
+
+    @keyframes driftSlow {
+      0% { transform: translateX(-18vw); }
+      100% { transform: translateX(118vw); }
+    }
+
+    @keyframes floatBob {
+      0%, 100% { transform: translateY(0px) rotate(-1deg); }
+      50% { transform: translateY(-10px) rotate(1.5deg); }
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.35; transform: scale(0.85) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.2) rotate(15deg); }
+    }
+
+    @keyframes owlBlink {
+      0%, 92%, 100% { transform: scaleY(1); }
+      96% { transform: scaleY(0.1); }
+    }
+
+    @keyframes wandGlow {
+      0%, 100% { filter: drop-shadow(0 0 4px #fde047); transform: scale(1); }
+      50% { filter: drop-shadow(0 0 12px #fbbf24); transform: scale(1.12); }
+    }
+
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.92) translateY(14px); }
+      70% { transform: scale(1.015) translateY(-2px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    @keyframes shakeError {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-6px); }
+      80% { transform: translateX(6px); }
+    }
+
+    @keyframes trophyPulse {
+      0%, 100% { transform: scale(1) rotate(-2deg); }
+      50% { transform: scale(1.06) rotate(2deg); }
+    }
+
+    @keyframes starSpin {
+      0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+      75% { transform: scale(1.25) rotate(8deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    .cloud-1 { animation: driftSlow 48s linear infinite; top: 8%; left: 0; }
+    .cloud-2 { animation: driftSlow 64s linear infinite; animation-delay: -26s; top: 24%; left: 0; opacity: 0.85; }
+    .cloud-3 { animation: driftSlow 55s linear infinite; animation-delay: -12s; top: 68%; left: 0; opacity: 0.75; }
+    .sparkle-anim { animation: twinkle 2.8s ease-in-out infinite; }
+    .mascot-float { animation: floatBob 3.4s ease-in-out infinite; }
+    .owl-eye { transform-origin: center; transform-box: fill-box; animation: owlBlink 4.2s infinite; }
+    .wand-star { transform-origin: center; transform-box: fill-box; animation: wandGlow 1.8s ease-in-out infinite; }
+    .animate-pop { animation: popIn 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+    .animate-shake { animation: shakeError 0.45s ease-in-out; }
+    .animate-trophy { animation: trophyPulse 2.6s ease-in-out infinite; }
+    .star-pop { animation: starSpin 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+    /* การ์ดสไตล์การ์ตูน Neo-Brutalist ขอบหมึกหนา + เงา 3 มิติ */
+    .comic-card {
+      background: #ffffff;
+      border: 3.5px solid var(--ink);
+      border-radius: 1.75rem;
+      box-shadow: 6px 6px 0px var(--ink);
+      position: relative;
+    }
+
+    .comic-card-sm {
+      background: #ffffff;
+      border: 3px solid var(--ink);
+      border-radius: 1.25rem;
+      box-shadow: 4px 4px 0px var(--ink);
+    }
+
+    /* พื้นหลังรัศมี Sunburst ในแบนเนอร์ */
+    .comic-sunburst {
+      background:
+        repeating-conic-gradient(
+          from 0deg at 50% 50%,
+          rgba(255, 255, 255, 0.14) 0deg 15deg,
+          transparent 15deg 30deg
+        ),
+        linear-gradient(135deg, #4f46e5 0%, #6366f1 45%, #8b5cf6 100%);
+    }
+
+    /* ปุ่ม 3D การ์ตูนกดยุบได้จริง */
+    .comic-btn {
+      border: 3px solid var(--ink);
+      box-shadow: 0 5px 0 var(--ink);
+      transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.15s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .comic-btn::before {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 8px;
+      right: 8px;
+      height: 36%;
+      border-radius: 9999px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0));
+      pointer-events: none;
+    }
+    .comic-btn:hover:not(:disabled) {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 0 var(--ink);
+    }
+    .comic-btn:active:not(:disabled) {
+      transform: translateY(4px);
+      box-shadow: 0 1px 0 var(--ink);
+    }
+    .comic-btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      filter: grayscale(0.35);
+    }
+
+    /* ปุ่มขนาดเล็ก */
+    .comic-btn-sm {
+      border: 2.5px solid var(--ink);
+      box-shadow: 0 3px 0 var(--ink);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+    .comic-btn-sm:active:not(:disabled) {
+      transform: translateY(3px);
+      box-shadow: 0 0 0 var(--ink);
+    }
+
+    /* ช่องกรอกข้อมูลสไตล์การ์ตูน */
+    .comic-input {
+      border: 3px solid var(--ink);
+      border-radius: 1rem;
+      box-shadow: inset 0 3px 0 rgba(30, 27, 75, 0.08);
+      transition: all 0.15s ease;
+      background: #ffffff;
+    }
+    .comic-input:focus {
+      outline: none;
       border-color: #4f46e5;
-      background-color: #eef2ff;
-      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25);
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.28);
+      background: #fafaff;
     }
-    .option-radio:checked + .option-card .option-badge {
-      background-color: #4f46e5;
+
+    /* ตัวเลือกคำตอบ A B C D */
+    .choice-tile {
+      border: 3px solid #cbd5e1;
+      border-radius: 1.15rem;
+      box-shadow: 0 4px 0 #cbd5e1;
+      transition: all 0.14s ease;
+      background: #ffffff;
+    }
+    .choice-tile:hover {
+      border-color: var(--ink);
+      background: #fef9c3;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--ink);
+    }
+    .choice-radio:checked + .choice-tile {
+      border-color: var(--ink);
+      background: linear-gradient(135deg, #fef08a 0%, #fde047 100%);
+      box-shadow: 0 5px 0 var(--ink);
+      transform: translateY(-1px);
+    }
+    .choice-radio:checked + .choice-tile .choice-letter {
+      background: #4f46e5;
       color: #ffffff;
-      border-color: #4f46e5;
+      border-color: var(--ink);
+      transform: scale(1.08) rotate(-4deg);
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    .choice-letter {
+      transition: all 0.15s ease;
+      border: 2.5px solid var(--ink);
     }
-    .animate-fade { animation: fadeIn 0.35s ease-out forwards; }
+
+    /* กล่องคำพูดการ์ตูน Speech Bubble */
+    .speech-bubble {
+      position: relative;
+      background: #ffffff;
+      border: 3px solid var(--ink);
+      border-radius: 1.25rem;
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+    .speech-bubble::after {
+      content: "";
+      position: absolute;
+      left: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-width: 10px 12px 10px 0;
+      border-style: solid;
+      border-color: transparent var(--ink) transparent transparent;
+    }
+    .speech-bubble::before {
+      content: "";
+      position: absolute;
+      left: -7px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-width: 7px 9px 7px 0;
+      border-style: solid;
+      border-color: transparent #ffffff transparent transparent;
+      z-index: 2;
+    }
+
+    @media (max-width: 639px) {
+      .speech-bubble::after {
+        left: 50%;
+        top: -12px;
+        transform: translateX(-50%);
+        border-width: 0 10px 12px 10px;
+        border-color: transparent transparent var(--ink) transparent;
+      }
+      .speech-bubble::before {
+        left: 50%;
+        top: -7px;
+        transform: translateX(-50%);
+        border-width: 0 7px 9px 7px;
+        border-color: transparent transparent #ffffff transparent;
+      }
+    }
+
+    /* สวิตช์เปิด-ปิดสไตล์การ์ตูนในหน้า Admin */
+    .comic-toggle {
+      appearance: none;
+      width: 56px;
+      height: 32px;
+      border-radius: 9999px;
+      border: 3px solid var(--ink);
+      background: #e2e8f0;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      flex-shrink: 0;
+    }
+    .comic-toggle::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 3px;
+      width: 22px;
+      height: 22px;
+      border-radius: 9999px;
+      background: #ffffff;
+      border: 2.5px solid var(--ink);
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .comic-toggle:checked {
+      background: #34d399;
+    }
+    .comic-toggle:checked::after {
+      transform: translateX(22px);
+    }
+
+    /* Confetti Canvas */
+    #confettiCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 60;
+    }
+
+    /* Text stroke effect for comic headings */
+    .comic-text-shadow {
+      text-shadow: 3px 3px 0px #1e1b4b;
+    }
+    .comic-text-shadow-sm {
+      text-shadow: 2px 2px 0px #1e1b4b;
+    }
   </style>
 </head>
-<body class="text-slate-800 antialiased">
+<body class="antialiased selection:bg-yellow-300 selection:text-indigo-950">
 
-  <!-- Top Navigation -->
-  <header class="sticky top-0 z-30 bg-white/85 backdrop-blur-md border-b border-slate-200/80">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-3 cursor-pointer" onclick="goHomeIfSafe()">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center text-white font-bold shadow-md shadow-indigo-200">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+  <!-- พื้นหลังเมฆการ์ตูนและประกายดาว -->
+  <div class="sky-decor" aria-hidden="true">
+    <!-- Cloud 1 -->
+    <svg class="absolute cloud-1 w-44 sm:w-64 drop-shadow-sm" viewBox="0 0 220 110" fill="none">
+      <path d="M46 92H178C197 92 212 78 212 60C212 44 200 31 184 29C178 13 162 4 144 4C125 4 109 14 103 30C97 26 90 24 82 24C61 24 44 40 43 60C26 62 14 75 14 90C14 91 30 92 46 92Z" fill="#FFFFFF" stroke="#1E1B4B" stroke-width="5" stroke-linejoin="round"/>
+    </svg>
+    <!-- Cloud 2 -->
+    <svg class="absolute cloud-2 w-36 sm:w-52" viewBox="0 0 220 110" fill="none">
+      <path d="M46 92H178C197 92 212 78 212 60C212 44 200 31 184 29C178 13 162 4 144 4C125 4 109 14 103 30C97 26 90 24 82 24C61 24 44 40 43 60C26 62 14 75 14 90C14 91 30 92 46 92Z" fill="#FFFFFF" stroke="#1E1B4B" stroke-width="5" stroke-linejoin="round"/>
+    </svg>
+    <!-- Cloud 3 -->
+    <svg class="absolute cloud-3 w-48 sm:w-72" viewBox="0 0 220 110" fill="none">
+      <path d="M46 92H178C197 92 212 78 212 60C212 44 200 31 184 29C178 13 162 4 144 4C125 4 109 14 103 30C97 26 90 24 82 24C61 24 44 40 43 60C26 62 14 75 14 90C14 91 30 92 46 92Z" fill="#FFFFFF" stroke="#1E1B4B" stroke-width="5" stroke-linejoin="round"/>
+    </svg>
+
+    <!-- Twinkling Comic Sparkles -->
+    <svg class="absolute top-24 left-[8%] w-7 h-7 sparkle-anim" viewBox="0 0 40 40" fill="none">
+      <path d="M20 2L24 16L38 20L24 24L20 38L16 24L2 20L16 16L20 2Z" fill="#FDE047" stroke="#1E1B4B" stroke-width="3" stroke-linejoin="round"/>
+    </svg>
+    <svg class="absolute top-36 right-[10%] w-9 h-9 sparkle-anim" style="animation-delay: 0.9s" viewBox="0 0 40 40" fill="none">
+      <path d="M20 2L24 16L38 20L24 24L20 38L16 24L2 20L16 16L20 2Z" fill="#FB7185" stroke="#1E1B4B" stroke-width="3" stroke-linejoin="round"/>
+    </svg>
+    <svg class="absolute bottom-24 left-[12%] w-8 h-8 sparkle-anim" style="animation-delay: 1.5s" viewBox="0 0 40 40" fill="none">
+      <path d="M20 2L24 16L38 20L24 24L20 38L16 24L2 20L16 16L20 2Z" fill="#34D399" stroke="#1E1B4B" stroke-width="3" stroke-linejoin="round"/>
+    </svg>
+    <svg class="absolute bottom-32 right-[8%] w-6 h-6 sparkle-anim" style="animation-delay: 0.4s" viewBox="0 0 40 40" fill="none">
+      <path d="M20 2L24 16L38 20L24 24L20 38L16 24L2 20L16 16L20 2Z" fill="#FFFFFF" stroke="#1E1B4B" stroke-width="3" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="halftone-overlay" aria-hidden="true"></div>
+
+  <!-- Confetti Overlay -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="fixed bottom-5 right-5 left-5 sm:left-auto z-50 flex flex-col gap-2.5 items-center sm:items-end pointer-events-none"></div>
+
+  <!-- ==================== TOP CARTOON HEADER ==================== -->
+  <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b-4 border-[#1e1b4b] shadow-md">
+    <div class="max-w-5xl mx-auto px-3 sm:px-6 h-16 sm:h-[72px] flex items-center justify-between gap-2">
+      <!-- Brand Logo -->
+      <button type="button" onclick="handleLogoClick()" class="flex items-center gap-2.5 sm:gap-3 text-left group focus:outline-none">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-amber-300 via-yellow-400 to-orange-400 border-[3px] border-[#1e1b4b] shadow-[3px_3px_0px_#1e1b4b] flex items-center justify-center group-hover:rotate-[-6deg] transition-transform shrink-0">
+          <!-- Mini Owl Crest -->
+          <svg class="w-7 h-7" viewBox="0 0 64 64" fill="none">
+            <path d="M12 24L32 8L52 24H12Z" fill="#4F46E5" stroke="#1E1B4B" stroke-width="4" stroke-linejoin="round"/>
+            <ellipse cx="32" cy="40" rx="18" ry="16" fill="#A78BFA" stroke="#1E1B4B" stroke-width="4"/>
+            <circle cx="24" cy="37" r="6" fill="#FFFFFF" stroke="#1E1B4B" stroke-width="3"/>
+            <circle cx="40" cy="37" r="6" fill="#FFFFFF" stroke="#1E1B4B" stroke-width="3"/>
+            <circle cx="24" cy="37" r="2.5" fill="#1E1B4B"/>
+            <circle cx="40" cy="37" r="2.5" fill="#1E1B4B"/>
+            <path d="M29 43L32 48L35 43H29Z" fill="#FBBF24" stroke="#1E1B4B" stroke-width="2.5" stroke-linejoin="round"/>
           </svg>
         </div>
         <div>
-          <h1 class="font-bold text-slate-900 leading-tight text-sm sm:text-base">English Pre-test</h1>
-          <p class="text-xs text-slate-500 font-en">Present Perfect Simple Tense</p>
+          <div class="flex items-center gap-1.5">
+            <span class="font-comic font-bold text-base sm:text-xl tracking-wide text-indigo-700 leading-none">TENSE QUEST</span>
+            <span class="hidden sm:inline-block text-[11px] font-bold px-2 py-0.5 rounded-full bg-rose-400 text-white border-2 border-[#1e1b4b] -rotate-2">ม.6</span>
+          </div>
+          <p class="text-[11px] sm:text-xs font-semibold text-slate-600 leading-tight mt-0.5">Pre-test • Present Perfect Simple</p>
         </div>
-      </div>
+      </button>
 
+      <!-- Header Right Controls -->
       <div class="flex items-center gap-2">
-        <span id="demoBadge" class="hidden text-xs font-medium px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 border border-amber-200">
-          Demo Mode
+        <!-- Demo Mode Badge -->
+        <span id="demoBadge" class="hidden text-[11px] sm:text-xs font-comic font-bold px-2.5 py-1 rounded-full bg-amber-300 text-[#1e1b4b] border-2 border-[#1e1b4b] shadow-[2px_2px_0px_#1e1b4b] animate-pulse">
+          DEMO MODE
         </span>
-        <button onclick="openAdminModal()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium bg-slate-900 hover:bg-indigo-700 text-white transition shadow-sm">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+
+        <!-- Sound SFX Toggle -->
+        <button id="btnSoundToggle" type="button" onclick="toggleSound()" title="เปิด/ปิดเสียงเอฟเฟกต์"
+          class="comic-btn-sm w-10 h-10 rounded-xl bg-sky-200 hover:bg-sky-300 flex items-center justify-center text-lg" aria-label="เปิดปิดเสียง">
+          <span id="soundIcon">🔊</span>
+        </button>
+
+        <!-- Admin Button -->
+        <button type="button" onclick="openAdminModal()"
+          class="comic-btn-sm px-3 sm:px-4 h-10 rounded-xl bg-gradient-to-b from-indigo-500 to-indigo-700 text-white font-bold text-xs sm:text-sm flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
           </svg>
-          Admin
+          <span>Admin</span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Main Container -->
-  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-9 pb-16">
 
-    <!-- ==================== VIEW 1: REGISTER / HOME ==================== -->
-    <section id="viewHome" class="max-w-xl mx-auto animate-fade">
-      <div class="glass-card rounded-3xl shadow-xl shadow-indigo-100/60 overflow-hidden">
-        <!-- Banner -->
-        <div class="bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 px-6 py-8 text-white relative overflow-hidden">
-          <div class="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-white/10"></div>
-          <div class="absolute -left-6 -bottom-10 w-28 h-28 rounded-full bg-white/10"></div>
-          <span class="inline-block text-xs font-semibold tracking-wider uppercase bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full mb-3">
-            แบบทดสอบก่อนเรียน • ระดับชั้น ม.6
-          </span>
-          <h2 class="text-2xl sm:text-3xl font-bold font-en tracking-tight">Present Perfect Simple</h2>
-          <p class="text-indigo-100 text-sm mt-2">
-            แบบทดสอบปรนัย 4 ตัวเลือก จำนวน 15 ข้อ (คละระดับ ง่าย • กลาง • ยาก)
-          </p>
-        </div>
+    <!-- ================================================================ -->
+    <!-- VIEW 1: HOME / REGISTRATION SCREEN                               -->
+    <!-- ================================================================ -->
+    <section id="viewHome" class="max-w-2xl mx-auto animate-pop">
+      <div class="comic-card overflow-hidden">
+        <!-- Epic Cartoon Hero Banner -->
+        <div class="comic-sunburst px-5 sm:px-8 pt-7 pb-8 text-white relative overflow-hidden border-b-4 border-[#1e1b4b]">
+          <!-- Decorative Floating Comic Pill -->
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-5">
+            <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold px-3.5 py-1 rounded-full bg-amber-300 text-[#1e1b4b] border-[2.5px] border-[#1e1b4b] shadow-[3px_3px_0px_#1e1b4b] -rotate-1">
+              <span>⚡</span> ภารกิจก่อนเรียน (PRE-TEST) • ม.6
+            </span>
+            <span class="inline-flex items-center gap-1 text-xs font-comic font-bold px-3 py-1 rounded-full bg-emerald-300 text-[#1e1b4b] border-[2.5px] border-[#1e1b4b] shadow-[3px_3px_0px_#1e1b4b] rotate-1">
+              15 QUESTS
+            </span>
+          </div>
 
-        <!-- Closed Notice -->
-        <div id="closedAlert" class="hidden mx-6 mt-6 p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-sm flex items-start gap-3">
-          <svg class="w-5 h-5 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-          </svg>
-          <div>
-            <p class="font-semibold">ระบบปิดรับการทำแบบทดสอบชั่วคราว</p>
-            <p class="text-xs mt-0.5 text-rose-600">กรุณาติดต่อครูผู้สอนเพื่อเปิดระบบ</p>
+          <!-- Mascot + Speech Bubble Hero Row -->
+          <div class="flex flex-col sm:flex-row items-center gap-5">
+            <!-- Animated Cartoon SVG Mascot: Prof. Hoot Wizard Owl -->
+            <div class="mascot-float shrink-0">
+              <svg class="w-32 h-32 sm:w-36 sm:h-36 drop-shadow-[0_6px_0_rgba(30,27,75,0.45)]" viewBox="0 0 180 180" fill="none">
+                <!-- Magic Glow Circle -->
+                <circle cx="90" cy="105" r="58" fill="#FDE047" fill-opacity="0.22"/>
+                <!-- Wizard Hat -->
+                <path d="M52 62L92 12L126 58L52 62Z" fill="#312E81" stroke="#1E1B4B" stroke-width="5" stroke-linejoin="round"/>
+                <path d="M74 35L110 38" stroke="#FBBF24" stroke-width="6" stroke-linecap="round"/>
+                <path d="M38 64C62 54 118 52 142 64C146 66 144 73 136 73C112 69 68 70 44 74C36 75 34 66 38 64Z" fill="#4338CA" stroke="#1E1B4B" stroke-width="5" stroke-linejoin="round"/>
+                <!-- Star on Hat -->
+                <path d="M90 25L93 33L101 34L95 39L97 47L90 43L83 47L85 39L79 34L87 33L90 25Z" fill="#FDE047" stroke="#1E1B4B" stroke-width="2.5" stroke-linejoin="round"/>
+
+                <!-- Owl Body -->
+                <ellipse cx="90" cy="112" rx="44" ry="42" fill="#818CF8" stroke="#1E1B4B" stroke-width="5"/>
+                <!-- Owl Belly -->
+                <ellipse cx="90" cy="126" rx="28" ry="25" fill="#E0E7FF" stroke="#1E1B4B" stroke-width="4"/>
+                <!-- Belly Feathers -->
+                <path d="M78 122Q84 128 90 122Q96 128 102 122" stroke="#6366F1" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+                <path d="M82 134Q90 140 98 134" stroke="#6366F1" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+
+                <!-- Left Wing holding Magic Book -->
+                <path d="M48 104C32 110 28 130 42 140C50 144 57 136 56 124Z" fill="#6366F1" stroke="#1E1B4B" stroke-width="4.5" stroke-linejoin="round"/>
+                <!-- Right Wing holding Magic Wand -->
+                <path d="M132 104C148 108 152 126 138 138C130 142 123 134 124 122Z" fill="#6366F1" stroke="#1E1B4B" stroke-width="4.5" stroke-linejoin="round"/>
+
+                <!-- Magic Wand -->
+                <line x1="142" y1="126" x2="162" y2="86" stroke="#92400E" stroke-width="6" stroke-linecap="round"/>
+                <line x1="142" y1="126" x2="162" y2="86" stroke="#1E1B4B" stroke-width="2" stroke-linecap="round"/>
+                <g class="wand-star">
+                  <path d="M164 68L168 79L179 81L170 88L173 99L164 93L155 99L158 88L149 81L160 79L164 68Z" fill="#FDE047" stroke="#1E1B4B" stroke-width="3" stroke-linejoin="round"/>
+                </g>
+
+                <!-- Cute Glasses & Eyes -->
+                <circle cx="72" cy="96" r="15" fill="#FFFFFF" stroke="#1E1B4B" stroke-width="4.5"/>
+                <circle cx="108" cy="96" r="15" fill="#FFFFFF" stroke="#1E1B4B" stroke-width="4.5"/>
+                <line x1="87" y1="96" x2="93" y2="96" stroke="#1E1B4B" stroke-width="4.5"/>
+
+                <g class="owl-eye">
+                  <circle cx="73" cy="96" r="7" fill="#1E1B4B"/>
+                  <circle cx="70" cy="93" r="2.6" fill="#FFFFFF"/>
+                  <circle cx="107" cy="96" r="7" fill="#1E1B4B"/>
+                  <circle cx="104" cy="93" r="2.6" fill="#FFFFFF"/>
+                </g>
+
+                <!-- Rosy Cheeks -->
+                <ellipse cx="56" cy="108" rx="6" ry="3.5" fill="#FB7185" fill-opacity="0.7"/>
+                <ellipse cx="124" cy="108" rx="6" ry="3.5" fill="#FB7185" fill-opacity="0.7"/>
+
+                <!-- Beak -->
+                <path d="M84 103L90 114L96 103Z" fill="#FBBF24" stroke="#1E1B4B" stroke-width="3.5" stroke-linejoin="round"/>
+
+                <!-- Feet -->
+                <path d="M72 152L66 164M72 152L74 165M72 152L80 163" stroke="#F59E0B" stroke-width="5" stroke-linecap="round"/>
+                <path d="M108 152L100 163M108 152L107 165M108 152L115 164" stroke="#F59E0B" stroke-width="5" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <!-- Title + Speech Bubble -->
+            <div class="text-center sm:text-left flex-1">
+              <h1 class="font-comic font-bold text-3xl sm:text-4xl tracking-tight text-yellow-300 comic-text-shadow leading-tight">
+                Present Perfect Simple
+              </h1>
+              <p class="text-indigo-100 text-xs sm:text-sm font-medium mt-1">
+                แบบทดสอบปรนัย 4 ตัวเลือก • คละระดับ ง่าย กลาง ยาก อย่างละ 5 ข้อ
+              </p>
+
+              <!-- Speech Bubble -->
+              <div class="speech-bubble mt-4 px-4 py-3 text-[#1e1b4b] text-xs sm:text-sm font-semibold">
+                <span class="text-indigo-600 font-bold">Prof. Hoot:</span>
+                <span id="homeMascotSpeech">“พร้อมพิชิต Present Perfect Simple แล้วหรือยัง? กรอกชื่อแล้วลุยภารกิจ 15 ข้อกันเลย!”</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Student Form -->
-        <form id="studentForm" onsubmit="startQuiz(event)" class="p-6 sm:p-8 space-y-5">
+        <!-- Closed Notice Banner -->
+        <div id="closedAlert" class="hidden mx-5 sm:mx-8 mt-6 p-4 rounded-2xl bg-rose-100 border-[3px] border-[#1e1b4b] shadow-[4px_4px_0px_#1e1b4b] flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-rose-500 text-white border-2 border-[#1e1b4b] flex items-center justify-center text-xl shrink-0">🔒</div>
+          <div>
+            <p class="font-bold text-rose-900 text-sm sm:text-base">ระบบปิดรับการทำแบบทดสอบชั่วคราว</p>
+            <p class="text-xs text-rose-700">กรุณารอครูผู้สอนเปิดระบบในหน้า Admin ก่อนเข้าทำข้อสอบนะครับ</p>
+          </div>
+        </div>
+
+        <!-- Student Registration Form -->
+        <form id="studentForm" onsubmit="startQuiz(event)" class="p-5 sm:p-8 space-y-5 bg-gradient-to-b from-white to-amber-50/40">
+          <div class="flex items-center gap-2 pb-1 border-b-2 border-dashed border-slate-200">
+            <span class="text-xl">🪪</span>
+            <h2 class="font-bold text-base sm:text-lg text-[#1e1b4b]">ลงทะเบียนนักผจญภัย (Student Info)</h2>
+          </div>
+
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-sm font-medium text-slate-700 mb-1.5">ชื่อ <span class="text-rose-500">*</span></label>
-              <input id="inputFirstName" type="text" required placeholder="เช่น กิตติพงศ์"
-                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition bg-white" />
+              <label for="inputFirstName" class="block text-sm font-bold text-[#1e1b4b] mb-1.5">
+                ชื่อจริง <span class="text-rose-500">*</span>
+              </label>
+              <input id="inputFirstName" type="text" required placeholder="เช่น ณัฐพล"
+                class="comic-input w-full px-4 py-3 text-sm sm:text-base font-medium" />
             </div>
             <div>
-              <label class="block text-sm font-medium text-slate-700 mb-1.5">นามสกุล <span class="text-rose-500">*</span></label>
+              <label for="inputLastName" class="block text-sm font-bold text-[#1e1b4b] mb-1.5">
+                นามสกุล <span class="text-rose-500">*</span>
+              </label>
               <input id="inputLastName" type="text" required placeholder="เช่น ใจดี"
-                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition bg-white" />
+                class="comic-input w-full px-4 py-3 text-sm sm:text-base font-medium" />
             </div>
           </div>
 
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block text-sm font-medium text-slate-700 mb-1.5">ชั้น <span class="text-rose-500">*</span></label>
-              <select id="inputClassroom" required
-                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition bg-white">
+              <label for="inputClassroom" class="block text-sm font-bold text-[#1e1b4b] mb-1.5">
+                ชั้นเรียน <span class="text-rose-500">*</span>
+              </label>
+              <select id="inputClassroom" required class="comic-input w-full px-4 py-3 text-sm sm:text-base font-semibold cursor-pointer">
                 <option value="" disabled selected>เลือกห้อง</option>
                 <option value="ม.6/1">ม.6/1</option>
                 <option value="ม.6/2">ม.6/2</option>
@@ -133,198 +572,298 @@
               </select>
             </div>
             <div>
-              <label class="block text-sm font-medium text-slate-700 mb-1.5">เลขที่ <span class="text-rose-500">*</span></label>
+              <label for="inputNumber" class="block text-sm font-bold text-[#1e1b4b] mb-1.5">
+                เลขที่ (1–60) <span class="text-rose-500">*</span>
+              </label>
               <input id="inputNumber" type="number" min="1" max="60" required placeholder="เช่น 12"
-                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition bg-white" />
+                class="comic-input w-full px-4 py-3 text-sm sm:text-base font-comic font-bold" />
+            </div>
+          </div>
+
+          <!-- Mission Highlights -->
+          <div class="grid grid-cols-3 gap-2.5 pt-1 text-center">
+            <div class="rounded-2xl bg-emerald-100 border-2 border-[#1e1b4b] p-2.5">
+              <p class="text-[11px] font-bold text-emerald-800">ระดับง่าย</p>
+              <p class="font-comic font-bold text-lg text-emerald-950">5 ข้อ</p>
+            </div>
+            <div class="rounded-2xl bg-amber-100 border-2 border-[#1e1b4b] p-2.5">
+              <p class="text-[11px] font-bold text-amber-800">ระดับกลาง</p>
+              <p class="font-comic font-bold text-lg text-amber-950">5 ข้อ</p>
+            </div>
+            <div class="rounded-2xl bg-rose-100 border-2 border-[#1e1b4b] p-2.5">
+              <p class="text-[11px] font-bold text-rose-800">ระดับยาก</p>
+              <p class="font-comic font-bold text-lg text-rose-950">5 ข้อ</p>
             </div>
           </div>
 
           <div class="pt-2">
             <button id="btnStartQuiz" type="submit"
-              class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-semibold shadow-lg shadow-indigo-200 transition transform active:scale-[0.99] flex items-center justify-center gap-2">
-              <span>เริ่มทำแบบทดสอบ (15 ข้อ)</span>
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-              </svg>
+              class="comic-btn w-full py-4 px-6 rounded-2xl bg-gradient-to-b from-amber-300 via-yellow-400 to-orange-400 text-[#1e1b4b] font-bold text-base sm:text-lg flex items-center justify-center gap-2.5">
+              <span class="text-xl">🚀</span>
+              <span>เริ่มผจญภัยทำแบบทดสอบ (15 ข้อ)!</span>
             </button>
           </div>
         </form>
       </div>
     </section>
 
-    <!-- ==================== VIEW 2: QUIZ ==================== -->
-    <section id="viewQuiz" class="hidden max-w-3xl mx-auto animate-fade">
-      <!-- Sticky Status Bar -->
-      <div class="sticky top-[72px] z-20 glass-card rounded-2xl p-4 mb-6 shadow-md shadow-slate-200/60">
-        <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
-          <div class="flex items-center gap-2 text-sm">
-            <span class="px-2.5 py-1 rounded-lg bg-indigo-100 text-indigo-700 font-semibold" id="quizStudentRoom">ม.6/1</span>
-            <span class="font-medium text-slate-800" id="quizStudentName">ชื่อ นามสกุล</span>
-            <span class="text-slate-500 text-xs" id="quizStudentNo">เลขที่ 1</span>
+    <!-- ================================================================ -->
+    <!-- VIEW 2: QUIZ SCREEN (15 MULTIPLE CHOICE QUESTIONS)               -->
+    <!-- ================================================================ -->
+    <section id="viewQuiz" class="hidden max-w-3xl mx-auto animate-pop">
+      <!-- Sticky Cartoon HUD Bar -->
+      <div class="sticky top-[74px] sm:top-[82px] z-20 comic-card-sm bg-white/95 backdrop-blur-md p-3.5 sm:p-4 mb-6">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span id="quizStudentRoom" class="px-2.5 py-1 rounded-xl bg-indigo-600 text-white font-bold text-xs border-2 border-[#1e1b4b]">ม.6/1</span>
+            <span id="quizStudentName" class="font-bold text-sm sm:text-base text-[#1e1b4b]">ชื่อ นามสกุล</span>
+            <span id="quizStudentNo" class="text-xs font-bold px-2 py-0.5 rounded-lg bg-slate-100 border-2 border-[#1e1b4b] text-slate-700">เลขที่ 1</span>
           </div>
-          <div class="flex items-center gap-3 text-sm">
-            <span class="font-medium text-slate-600">ทำแล้ว <strong id="answeredCount" class="text-indigo-600">0</strong>/15</span>
-            <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-en font-semibold text-xs" id="quizTimer">00:00</span>
+
+          <div class="flex items-center gap-2">
+            <div class="px-3 py-1 rounded-xl bg-emerald-100 border-2 border-[#1e1b4b] text-xs sm:text-sm font-bold text-emerald-950">
+              ทำแล้ว <span id="answeredCount" class="font-comic text-indigo-700 text-base">0</span>/15
+            </div>
+            <div class="px-3 py-1 rounded-xl bg-amber-200 border-2 border-[#1e1b4b] font-comic font-bold text-xs sm:text-sm text-[#1e1b4b] flex items-center gap-1">
+              <span>⏱️</span><span id="quizTimer">00:00</span>
+            </div>
           </div>
         </div>
-        <div class="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
-          <div id="quizProgressBar" class="h-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-300" style="width: 0%"></div>
+
+        <!-- Gamified Journey Track -->
+        <div class="relative pt-3 pb-1">
+          <!-- Track Bar -->
+          <div class="w-full h-4 bg-slate-200 rounded-full border-2 border-[#1e1b4b] overflow-hidden">
+            <div id="quizProgressBar" class="h-full bg-gradient-to-r from-emerald-400 via-sky-400 to-indigo-500 transition-all duration-300" style="width: 0%"></div>
+          </div>
+          <!-- Moving Mini Owl Runner -->
+          <div id="quizRunner" class="absolute -top-1 transition-all duration-300 pointer-events-none" style="left: calc(0% - 14px)">
+            <div class="w-8 h-8 rounded-full bg-yellow-300 border-2 border-[#1e1b4b] shadow-sm flex items-center justify-center text-base">🦉</div>
+          </div>
+          <!-- Finish Flag -->
+          <div class="absolute -top-1 right-0 pointer-events-none text-lg">🏁</div>
         </div>
+        <p id="quizMascotTip" class="text-[11px] sm:text-xs font-semibold text-indigo-700 mt-1.5 text-center sm:text-left">
+          💬 Prof. Hoot: ค่อยๆ อ่านคำบอกเวลา (since, for, yet, just, ever, so far) ให้ดีนะ!
+        </p>
       </div>
 
-      <!-- Questions Container -->
-      <div id="questionsContainer" class="space-y-5"></div>
+      <!-- Questions List -->
+      <div id="questionsContainer" class="space-y-6"></div>
 
-      <!-- Submit Button -->
-      <div class="mt-8 glass-card rounded-2xl p-6 text-center shadow-lg">
-        <p class="text-sm text-slate-500 mb-4">กรุณาตรวจสอบคำตอบให้ครบทั้ง 15 ข้อก่อนกดส่ง</p>
-        <button id="btnSubmitQuiz" onclick="submitQuiz()"
-          class="w-full sm:w-auto px-10 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold shadow-lg shadow-emerald-200 transition inline-flex items-center justify-center gap-2">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
-          </svg>
-          <span>ส่งคำตอบ</span>
+      <!-- Submit Card -->
+      <div class="mt-8 comic-card p-6 sm:p-8 text-center bg-gradient-to-b from-white to-emerald-50">
+        <div class="text-4xl mb-2">🏆</div>
+        <h3 class="font-bold text-lg sm:text-xl text-[#1e1b4b]">ตรวจทานคำตอบครบทั้ง 15 ข้อแล้วใช่ไหม?</h3>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1 mb-5">เมื่อกดส่งคำตอบ ระบบจะคำนวณคะแนนและบันทึกผลลงฐานข้อมูลทันที</p>
+        <button id="btnSubmitQuiz" type="button" onclick="submitQuiz()"
+          class="comic-btn w-full sm:w-auto px-10 py-4 rounded-2xl bg-gradient-to-b from-emerald-400 to-emerald-600 text-white font-bold text-base sm:text-lg inline-flex items-center justify-center gap-2">
+          <span>✨</span>
+          <span>ส่งคำตอบและดูคะแนนเลย!</span>
         </button>
       </div>
     </section>
 
-    <!-- ==================== VIEW 3: RESULT ==================== -->
-    <section id="viewResult" class="hidden max-w-3xl mx-auto animate-fade">
-      <div class="glass-card rounded-3xl shadow-xl overflow-hidden mb-6">
-        <div class="bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 px-6 py-8 text-center text-white">
-          <p class="text-indigo-100 text-sm mb-1">บันทึกคะแนนเรียบร้อยแล้ว</p>
-          <h2 class="text-2xl font-bold" id="resStudentInfo">ชื่อ นามสกุล (ม.6/1 เลขที่ 1)</h2>
-          <div class="mt-6 inline-flex flex-col items-center justify-center w-36 h-36 rounded-full bg-white/15 backdrop-blur-md border-4 border-white/40">
-            <span class="text-5xl font-extrabold font-en" id="resScore">0</span>
-            <span class="text-sm text-indigo-100">เต็ม 15 คะแนน</span>
+    <!-- ================================================================ -->
+    <!-- VIEW 3: RESULT & ANSWER REVIEW SCREEN                            -->
+    <!-- ================================================================ -->
+    <section id="viewResult" class="hidden max-w-3xl mx-auto animate-pop space-y-6">
+      <div class="comic-card overflow-hidden">
+        <!-- Victory Header -->
+        <div class="comic-sunburst px-6 py-8 text-center text-white border-b-4 border-[#1e1b4b] relative">
+          <!-- Rank Ribbon -->
+          <div id="resRankRibbon" class="inline-block px-5 py-1.5 rounded-full bg-amber-300 text-[#1e1b4b] font-comic font-bold text-sm sm:text-base border-[3px] border-[#1e1b4b] shadow-[3px_3px_0px_#1e1b4b] -rotate-1 mb-4">
+            S-RANK • GRAMMAR MASTER
           </div>
-          <p class="mt-4 text-sm text-indigo-100" id="resMeta">ใช้เวลา 00:00 • คิดเป็น 0%</p>
+
+          <!-- Animated Cartoon Trophy SVG -->
+          <div class="flex justify-center mb-3">
+            <svg class="w-28 h-28 sm:w-32 sm:h-32 animate-trophy drop-shadow-[0_6px_0_rgba(30,27,75,0.45)]" viewBox="0 0 140 140" fill="none">
+              <!-- Handles -->
+              <path d="M36 42H20C16 42 14 48 16 56C19 68 30 74 42 74" stroke="#FBBF24" stroke-width="10" stroke-linecap="round"/>
+              <path d="M36 42H20C16 42 14 48 16 56C19 68 30 74 42 74" stroke="#1E1B4B" stroke-width="4" stroke-linecap="round"/>
+              <path d="M104 42H120C124 42 126 48 124 56C121 68 110 74 98 74" stroke="#FBBF24" stroke-width="10" stroke-linecap="round"/>
+              <path d="M104 42H120C124 42 126 48 124 56C121 68 110 74 98 74" stroke="#1E1B4B" stroke-width="4" stroke-linecap="round"/>
+              <!-- Cup Body -->
+              <path d="M34 26H106V60C106 82 90 98 70 98C50 98 34 82 34 60V26Z" fill="#FDE047" stroke="#1E1B4B" stroke-width="5" stroke-linejoin="round"/>
+              <!-- Glossy Stripe -->
+              <path d="M46 36V58C46 70 53 79 60 83" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+              <!-- Center Star -->
+              <path d="M70 42L74 53L86 54L77 61L80 73L70 66L60 73L63 61L54 54L66 53L70 42Z" fill="#FB7185" stroke="#1E1B4B" stroke-width="3" stroke-linejoin="round"/>
+              <!-- Stem & Base -->
+              <rect x="61" y="96" width="18" height="16" fill="#F59E0B" stroke="#1E1B4B" stroke-width="4"/>
+              <rect x="40" y="110" width="60" height="16" rx="6" fill="#312E81" stroke="#1E1B4B" stroke-width="4.5"/>
+              <rect x="52" y="115" width="36" height="6" rx="3" fill="#FDE047"/>
+            </svg>
+          </div>
+
+          <!-- Star Rating Row (1-3 stars) -->
+          <div id="resStars" class="flex items-center justify-center gap-2 mb-3"></div>
+
+          <h2 id="resStudentInfo" class="text-xl sm:text-2xl font-bold comic-text-shadow-sm">ชื่อ นามสกุล (ม.6/1 เลขที่ 1)</h2>
+
+          <!-- Big Score Badge -->
+          <div class="mt-4 inline-flex items-baseline gap-2 px-7 py-3 rounded-3xl bg-white text-[#1e1b4b] border-4 border-[#1e1b4b] shadow-[5px_5px_0px_#1e1b4b]">
+            <span id="resScore" class="font-comic font-bold text-5xl sm:text-6xl text-indigo-600">0</span>
+            <span class="font-comic font-bold text-xl text-slate-400">/ 15</span>
+          </div>
+
+          <p id="resMeta" class="mt-3 text-sm font-semibold text-indigo-100">ใช้เวลา 00:00 • คิดเป็น 0%</p>
+          <p id="resMascotQuote" class="mt-2 inline-block px-4 py-1.5 rounded-xl bg-white/15 backdrop-blur-sm text-xs sm:text-sm font-medium text-yellow-200">
+            🦉 Prof. Hoot: เยี่ยมมาก!
+          </p>
         </div>
 
-        <!-- Breakdown by Difficulty -->
-        <div class="p-6 grid grid-cols-3 gap-3 sm:gap-4 text-center border-b border-slate-100">
-          <div class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-100">
-            <p class="text-xs font-medium text-emerald-700">ระดับง่าย</p>
-            <p class="text-xl font-bold text-emerald-800 font-en mt-1"><span id="resEasy">0</span>/5</p>
+        <!-- Difficulty Score Breakdown -->
+        <div class="p-5 sm:p-6 grid grid-cols-3 gap-3 sm:gap-4 text-center bg-white border-b-[3px] border-dashed border-slate-200">
+          <div class="rounded-2xl bg-emerald-100 border-[3px] border-[#1e1b4b] shadow-[3px_3px_0px_#1e1b4b] p-3.5">
+            <p class="text-xs font-bold text-emerald-800">🟢 ระดับง่าย</p>
+            <p class="font-comic font-bold text-2xl sm:text-3xl text-emerald-950 mt-1"><span id="resEasy">0</span><span class="text-base text-emerald-700">/5</span></p>
           </div>
-          <div class="p-3.5 rounded-2xl bg-amber-50 border border-amber-100">
-            <p class="text-xs font-medium text-amber-700">ระดับกลาง</p>
-            <p class="text-xl font-bold text-amber-800 font-en mt-1"><span id="resMedium">0</span>/5</p>
+          <div class="rounded-2xl bg-amber-100 border-[3px] border-[#1e1b4b] shadow-[3px_3px_0px_#1e1b4b] p-3.5">
+            <p class="text-xs font-bold text-amber-800">🟡 ระดับกลาง</p>
+            <p class="font-comic font-bold text-2xl sm:text-3xl text-amber-950 mt-1"><span id="resMedium">0</span><span class="text-base text-amber-700">/5</span></p>
           </div>
-          <div class="p-3.5 rounded-2xl bg-rose-50 border border-rose-100">
-            <p class="text-xs font-medium text-rose-700">ระดับยาก</p>
-            <p class="text-xl font-bold text-rose-800 font-en mt-1"><span id="resHard">0</span>/5</p>
+          <div class="rounded-2xl bg-rose-100 border-[3px] border-[#1e1b4b] shadow-[3px_3px_0px_#1e1b4b] p-3.5">
+            <p class="text-xs font-bold text-rose-800">🔴 ระดับยาก</p>
+            <p class="font-comic font-bold text-2xl sm:text-3xl text-rose-950 mt-1"><span id="resHard">0</span><span class="text-base text-rose-700">/5</span></p>
           </div>
         </div>
 
-        <div class="p-6 flex justify-center">
-          <button onclick="resetToHome()" class="px-6 py-2.5 rounded-xl bg-slate-900 hover:bg-indigo-700 text-white text-sm font-medium transition">
-            กลับหน้าแรก
+        <div class="p-5 flex justify-center bg-slate-50">
+          <button type="button" onclick="resetToHome()"
+            class="comic-btn px-8 py-3 rounded-2xl bg-gradient-to-b from-sky-400 to-indigo-600 text-white font-bold text-sm sm:text-base flex items-center gap-2">
+            <span>🏠</span> กลับหน้าแรก
           </button>
         </div>
       </div>
 
-      <!-- Review Section (controlled by Admin setting) -->
+      <!-- Review Section -->
       <div id="reviewSection" class="space-y-4"></div>
     </section>
 
-    <!-- ==================== VIEW 4: ADMIN DASHBOARD ==================== -->
-    <section id="viewAdmin" class="hidden animate-fade space-y-6">
-      <!-- Admin Header -->
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <span class="text-xs font-semibold uppercase tracking-wider text-indigo-600">Teacher Control Center</span>
-          <h2 class="text-2xl font-bold text-slate-900">ระบบจัดการแบบทดสอบ (Admin)</h2>
+    <!-- ================================================================ -->
+    <!-- VIEW 4: ADMIN CONTROL CENTER (PIN: 7846)                         -->
+    <!-- ================================================================ -->
+    <section id="viewAdmin" class="hidden animate-pop space-y-6">
+      <!-- Admin Top Banner -->
+      <div class="comic-card p-5 sm:p-6 bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 text-white flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3.5">
+          <div class="w-12 h-12 rounded-2xl bg-amber-300 text-[#1e1b4b] border-[3px] border-[#1e1b4b] shadow-[3px_3px_0px_#1e1b4b] flex items-center justify-center text-2xl shrink-0">
+            👑
+          </div>
+          <div>
+            <span class="text-xs font-comic font-bold uppercase tracking-wider text-yellow-200">Teacher Control Center</span>
+            <h2 class="text-xl sm:text-2xl font-bold comic-text-shadow-sm">ศูนย์บัญชาการ Admin • ม.6</h2>
+          </div>
         </div>
+
         <div class="flex flex-wrap items-center gap-2">
-          <button onclick="loadAdminData()" class="px-3.5 py-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 text-sm font-medium shadow-sm transition inline-flex items-center gap-1.5">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-            รีเฟรช
+          <button type="button" onclick="loadAdminData()"
+            class="comic-btn-sm px-3.5 py-2 rounded-xl bg-white text-[#1e1b4b] font-bold text-xs sm:text-sm flex items-center gap-1.5 hover:bg-sky-50">
+            <span>🔄</span> รีเฟรช
           </button>
-          <button onclick="exportCSV()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium shadow-sm transition inline-flex items-center gap-1.5">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-            ส่งออก CSV
+          <button type="button" onclick="exportCSV()"
+            class="comic-btn-sm px-3.5 py-2 rounded-xl bg-emerald-400 text-[#1e1b4b] font-bold text-xs sm:text-sm flex items-center gap-1.5 hover:bg-emerald-300">
+            <span>📥</span> ส่งออก CSV
           </button>
-          <button onclick="exitAdmin()" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium shadow-sm transition">
-            ออกจาก Admin
+          <button type="button" onclick="exitAdmin()"
+            class="comic-btn-sm px-3.5 py-2 rounded-xl bg-rose-400 text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 hover:bg-rose-500">
+            <span>🚪</span> ออกจาก Admin
           </button>
         </div>
       </div>
 
-      <!-- KPI Cards -->
+      <!-- 4 Colorful KPI Cards -->
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="glass-card rounded-2xl p-5 shadow-sm">
-          <p class="text-xs font-medium text-slate-500">ผู้เข้าสอบทั้งหมด</p>
-          <p class="text-3xl font-bold text-slate-900 font-en mt-1" id="kpiTotal">0</p>
-          <p class="text-xs text-slate-400 mt-1" id="kpiRooms">6/1: 0 • 6/2: 0 • 6/3: 0</p>
+        <div class="comic-card-sm p-4 sm:p-5 bg-gradient-to-br from-sky-100 to-white">
+          <p class="text-xs font-bold text-sky-800">👥 ผู้เข้าสอบทั้งหมด</p>
+          <p id="kpiTotal" class="font-comic font-bold text-3xl sm:text-4xl text-[#1e1b4b] mt-1">0</p>
+          <p id="kpiRooms" class="text-[11px] font-semibold text-slate-600 mt-1">6/1: 0 • 6/2: 0 • 6/3: 0</p>
         </div>
-        <div class="glass-card rounded-2xl p-5 shadow-sm">
-          <p class="text-xs font-medium text-slate-500">คะแนนเฉลี่ยรวม</p>
-          <p class="text-3xl font-bold text-indigo-600 font-en mt-1"><span id="kpiAvg">0.0</span><span class="text-base text-slate-400 font-normal"> /15</span></p>
-          <p class="text-xs text-slate-400 mt-1" id="kpiAvgPct">คิดเป็น 0%</p>
+
+        <div class="comic-card-sm p-4 sm:p-5 bg-gradient-to-br from-amber-100 to-white">
+          <p class="text-xs font-bold text-amber-800">⭐ คะแนนเฉลี่ยรวม</p>
+          <p class="font-comic font-bold text-3xl sm:text-4xl text-indigo-700 mt-1">
+            <span id="kpiAvg">0.0</span><span class="text-base text-slate-400 font-semibold"> /15</span>
+          </p>
+          <p id="kpiAvgPct" class="text-[11px] font-semibold text-slate-600 mt-1">คิดเป็น 0%</p>
         </div>
-        <div class="glass-card rounded-2xl p-5 shadow-sm">
-          <p class="text-xs font-medium text-slate-500">คะแนนสูงสุด / ต่ำสุด</p>
-          <p class="text-3xl font-bold text-emerald-600 font-en mt-1"><span id="kpiMax">0</span> <span class="text-slate-300 font-normal">/</span> <span class="text-rose-500" id="kpiMin">0</span></p>
-          <p class="text-xs text-slate-400 mt-1">จากคะแนนเต็ม 15</p>
+
+        <div class="comic-card-sm p-4 sm:p-5 bg-gradient-to-br from-emerald-100 to-white">
+          <p class="text-xs font-bold text-emerald-800">🏅 สูงสุด / ต่ำสุด</p>
+          <p class="font-comic font-bold text-3xl sm:text-4xl mt-1">
+            <span id="kpiMax" class="text-emerald-600">0</span>
+            <span class="text-slate-300 text-2xl">/</span>
+            <span id="kpiMin" class="text-rose-500">0</span>
+          </p>
+          <p class="text-[11px] font-semibold text-slate-600 mt-1">จากคะแนนเต็ม 15</p>
         </div>
-        <div class="glass-card rounded-2xl p-5 shadow-sm">
-          <p class="text-xs font-medium text-slate-500">สถานะแบบทดสอบ</p>
-          <p class="text-xl font-bold mt-2" id="kpiStatusText">เปิดรับคำตอบ</p>
-          <p class="text-xs text-slate-400 mt-1" id="kpiModeText">เชื่อมต่อ Google Sheets</p>
+
+        <div class="comic-card-sm p-4 sm:p-5 bg-gradient-to-br from-fuchsia-100 to-white">
+          <p class="text-xs font-bold text-fuchsia-800">⚡ สถานะระบบ</p>
+          <p id="kpiStatusText" class="text-lg sm:text-xl font-bold mt-2 text-emerald-700">● เปิดรับคำตอบ</p>
+          <p id="kpiModeText" class="text-[11px] font-semibold text-slate-600 mt-1">เชื่อมต่อ Google Sheets</p>
         </div>
       </div>
 
-      <!-- Charts -->
+      <!-- 2 Charts Row -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <div class="glass-card rounded-2xl p-5 shadow-sm">
-          <h3 class="font-semibold text-slate-800 text-sm mb-3">คะแนนเฉลี่ยแยกตามห้องเรียน</h3>
+        <div class="comic-card-sm p-5 bg-white">
+          <h3 class="font-bold text-sm sm:text-base text-[#1e1b4b] mb-3 flex items-center gap-2">
+            <span>📊</span> คะแนนเฉลี่ยแยกตามห้องเรียน (ม.6/1–6/3)
+          </h3>
           <div class="h-56"><canvas id="chartRooms"></canvas></div>
         </div>
-        <div class="glass-card rounded-2xl p-5 shadow-sm">
-          <h3 class="font-semibold text-slate-800 text-sm mb-3">เปอร์เซ็นต์ตอบถูกตามระดับความยาก</h3>
+        <div class="comic-card-sm p-5 bg-white">
+          <h3 class="font-bold text-sm sm:text-base text-[#1e1b4b] mb-3 flex items-center gap-2">
+            <span>🎯</span> เปอร์เซ็นต์ตอบถูกตามระดับความยาก
+          </h3>
           <div class="h-56"><canvas id="chartDifficulty"></canvas></div>
         </div>
       </div>
 
-      <!-- Admin Tabs -->
-      <div class="flex gap-2 border-b border-slate-200 pb-2 overflow-x-auto">
-        <button onclick="switchAdminTab('students')" id="tabBtnStudents" class="px-4 py-2 rounded-xl text-sm font-semibold bg-indigo-600 text-white transition whitespace-nowrap">
-          รายชื่อและคะแนน
+      <!-- Cartoon Admin Tabs -->
+      <div class="flex flex-wrap gap-2.5">
+        <button type="button" onclick="switchAdminTab('students')" id="tabBtnStudents"
+          class="comic-btn-sm px-4 py-2.5 rounded-2xl text-sm font-bold bg-amber-300 text-[#1e1b4b]">
+          📋 รายชื่อและคะแนน
         </button>
-        <button onclick="switchAdminTab('analysis')" id="tabBtnAnalysis" class="px-4 py-2 rounded-xl text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 transition whitespace-nowrap">
-          วิเคราะห์ข้อสอบรายข้อ (15 ข้อ)
+        <button type="button" onclick="switchAdminTab('analysis')" id="tabBtnAnalysis"
+          class="comic-btn-sm px-4 py-2.5 rounded-2xl text-sm font-bold bg-white text-slate-700 hover:bg-slate-50">
+          🔬 วิเคราะห์ข้อสอบรายข้อ (15 ข้อ)
         </button>
-        <button onclick="switchAdminTab('settings')" id="tabBtnSettings" class="px-4 py-2 rounded-xl text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 transition whitespace-nowrap">
-          ตั้งค่าระบบ & ล้างข้อมูล
+        <button type="button" onclick="switchAdminTab('settings')" id="tabBtnSettings"
+          class="comic-btn-sm px-4 py-2.5 rounded-2xl text-sm font-bold bg-white text-slate-700 hover:bg-slate-50">
+          ⚙️ ตั้งค่าระบบ & ล้างข้อมูล
         </button>
       </div>
 
       <!-- TAB 1: Student Table -->
-      <div id="adminTabStudents" class="glass-card rounded-2xl p-5 shadow-sm space-y-4">
+      <div id="adminTabStudents" class="comic-card p-5 space-y-4">
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div class="flex flex-wrap items-center gap-2">
-            <select id="filterRoom" onchange="renderAdminTable()" class="px-3.5 py-2 rounded-xl border border-slate-200 text-sm bg-white outline-none focus:border-indigo-500">
+            <select id="filterRoom" onchange="renderAdminTable()" class="comic-input px-3.5 py-2 text-sm font-semibold">
               <option value="ALL">ทุกห้องเรียน</option>
               <option value="ม.6/1">ม.6/1</option>
               <option value="ม.6/2">ม.6/2</option>
               <option value="ม.6/3">ม.6/3</option>
             </select>
-            <select id="sortBy" onchange="renderAdminTable()" class="px-3.5 py-2 rounded-xl border border-slate-200 text-sm bg-white outline-none focus:border-indigo-500">
+            <select id="sortBy" onchange="renderAdminTable()" class="comic-input px-3.5 py-2 text-sm font-semibold">
               <option value="newest">เรียงตามเวลาส่งล่าสุด</option>
               <option value="number">เรียงตามห้องและเลขที่</option>
-              <option value="scoreDesc">คะแนนมาก -> น้อย</option>
-              <option value="scoreAsc">คะแนนน้อย -> มาก</option>
+              <option value="scoreDesc">คะแนนมาก ไป น้อย</option>
+              <option value="scoreAsc">คะแนนน้อย ไป มาก</option>
             </select>
           </div>
-          <input id="searchStudent" oninput="renderAdminTable()" type="text" placeholder="ค้นหาชื่อ, นามสกุล, เลขที่..."
-            class="w-full sm:w-64 px-4 py-2 rounded-xl border border-slate-200 text-sm outline-none focus:border-indigo-500 bg-white" />
+          <input id="searchStudent" oninput="renderAdminTable()" type="text" placeholder="🔍 ค้นหาชื่อ, นามสกุล, เลขที่..."
+            class="comic-input w-full sm:w-64 px-4 py-2 text-sm font-medium" />
         </div>
 
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto rounded-2xl border-[2.5px] border-[#1e1b4b]">
           <table class="w-full text-sm text-left">
-            <thead>
-              <tr class="border-b border-slate-200 text-slate-500 text-xs uppercase">
+            <thead class="bg-indigo-100 border-b-[2.5px] border-[#1e1b4b] text-[#1e1b4b] text-xs font-bold uppercase">
+              <tr>
                 <th class="py-3 px-3">ห้อง</th>
                 <th class="py-3 px-3">เลขที่</th>
                 <th class="py-3 px-3">ชื่อ - นามสกุล</th>
@@ -334,60 +873,77 @@
                 <th class="py-3 px-3 text-right">จัดการ</th>
               </tr>
             </thead>
-            <tbody id="adminTableBody" class="divide-y divide-slate-100"></tbody>
+            <tbody id="adminTableBody" class="divide-y-2 divide-slate-100 bg-white"></tbody>
           </table>
         </div>
       </div>
 
       <!-- TAB 2: Item Analysis -->
-      <div id="adminTabAnalysis" class="hidden glass-card rounded-2xl p-5 shadow-sm space-y-4">
-        <p class="text-sm text-slate-500">แสดงอัตราการตอบถูกของนักเรียนในแต่ละข้อ เพื่อใช้ประเมินจุดอ่อนก่อนเริ่มสอน</p>
+      <div id="adminTabAnalysis" class="hidden comic-card p-5 space-y-4">
+        <div class="flex items-center gap-2 text-sm text-slate-600 font-medium">
+          <span>💡</span>
+          <p>วิเคราะห์เปอร์เซ็นต์นักเรียนที่ตอบถูกในแต่ละข้อ เพื่อใช้ประเมินจุดอ่อนก่อนเริ่มสอนจริง</p>
+        </div>
         <div id="itemAnalysisContainer" class="space-y-3"></div>
       </div>
 
-      <!-- TAB 3: Settings -->
+      <!-- TAB 3: Settings & Danger Zone -->
       <div id="adminTabSettings" class="hidden grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div class="glass-card rounded-2xl p-6 shadow-sm space-y-5">
-          <h3 class="font-bold text-slate-800">ควบคุมการทำงานของแบบทดสอบ</h3>
+        <div class="comic-card p-6 space-y-5 bg-white">
+          <h3 class="font-bold text-lg text-[#1e1b4b] flex items-center gap-2">
+            <span>🎛️</span> ควบคุมการทำงานของแบบทดสอบ
+          </h3>
 
-          <label class="flex items-center justify-between gap-4 cursor-pointer">
+          <label class="flex items-center justify-between gap-4 p-3 rounded-2xl bg-slate-50 border-2 border-slate-200 cursor-pointer">
             <div>
-              <p class="font-medium text-sm text-slate-800">เปิดรับการทำแบบทดสอบ</p>
+              <p class="font-bold text-sm text-[#1e1b4b]">เปิดรับการทำแบบทดสอบ</p>
               <p class="text-xs text-slate-500">หากปิด นักเรียนจะไม่สามารถกดเริ่มทำข้อสอบได้</p>
             </div>
-            <input id="setIsOpen" type="checkbox" class="w-5 h-5 accent-indigo-600 rounded" />
+            <input id="setIsOpen" type="checkbox" class="comic-toggle" />
           </label>
 
-          <label class="flex items-center justify-between gap-4 cursor-pointer">
+          <label class="flex items-center justify-between gap-4 p-3 rounded-2xl bg-slate-50 border-2 border-slate-200 cursor-pointer">
             <div>
-              <p class="font-medium text-sm text-slate-800">แสดงเฉลยและคำอธิบายหลังส่ง</p>
+              <p class="font-bold text-sm text-[#1e1b4b]">แสดงเฉลยและคำอธิบายหลังส่ง</p>
               <p class="text-xs text-slate-500">หากปิด นักเรียนจะเห็นเฉพาะคะแนนรวมเท่านั้น</p>
             </div>
-            <input id="setShowReview" type="checkbox" class="w-5 h-5 accent-indigo-600 rounded" />
+            <input id="setShowReview" type="checkbox" class="comic-toggle" />
           </label>
 
-          <label class="flex items-center justify-between gap-4 cursor-pointer">
+          <label class="flex items-center justify-between gap-4 p-3 rounded-2xl bg-slate-50 border-2 border-slate-200 cursor-pointer">
             <div>
-              <p class="font-medium text-sm text-slate-800">อนุญาตให้ทำข้อสอบซ้ำ</p>
-              <p class="text-xs text-slate-500">ตรวจสอบจาก ชั้น และ เลขที่ เดียวกัน</p>
+              <p class="font-bold text-sm text-[#1e1b4b]">อนุญาตให้ทำข้อสอบซ้ำ</p>
+              <p class="text-xs text-slate-500">ตรวจสอบจาก ชั้นเรียน และ เลขที่ เดียวกัน</p>
             </div>
-            <input id="setAllowRetake" type="checkbox" class="w-5 h-5 accent-indigo-600 rounded" />
+            <input id="setAllowRetake" type="checkbox" class="comic-toggle" />
           </label>
 
-          <button onclick="saveAdminSettings()" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold transition">
-            บันทึกการตั้งค่า
+          <button type="button" onclick="saveAdminSettings()"
+            class="comic-btn w-full py-3 rounded-2xl bg-gradient-to-b from-indigo-500 to-indigo-700 text-white font-bold text-sm sm:text-base">
+            💾 บันทึกการตั้งค่า
           </button>
         </div>
 
-        <div class="glass-card rounded-2xl p-6 shadow-sm border-rose-200/80 flex flex-col justify-between">
+        <!-- Danger Zone -->
+        <div class="comic-card p-6 bg-rose-50 flex flex-col justify-between">
           <div>
-            <h3 class="font-bold text-rose-600">พื้นที่จัดการข้อมูลขั้นสูง (Danger Zone)</h3>
-            <p class="text-xs text-slate-500 mt-1">
-              ใช้สำหรับล้างข้อมูลทดสอบก่อนใช้งานจริงกับนักเรียนทั้งหมด การลบจะไม่สามารถกู้คืนได้
+            <h3 class="font-bold text-lg text-rose-700 flex items-center gap-2">
+              <span>⚠️</span> พื้นที่จัดการข้อมูลขั้นสูง (Danger Zone)
+            </h3>
+            <p class="text-xs sm:text-sm text-rose-900/80 mt-2 leading-relaxed">
+              ใช้สำหรับล้างข้อมูลทดสอบก่อนนำไปใช้งานจริงกับนักเรียนทั้งหมด การลบข้อมูลทั้งหมดจะไม่สามารถกู้คืนได้
             </p>
+            <div id="demoReseedWrap" class="hidden mt-4 p-3.5 rounded-2xl bg-amber-100 border-2 border-[#1e1b4b]">
+              <p class="text-xs font-bold text-[#1e1b4b] mb-2">🧪 สำหรับ Demo Mode เท่านั้น:</p>
+              <button type="button" onclick="reseedDemoData()"
+                class="comic-btn-sm w-full py-2 rounded-xl bg-amber-300 text-[#1e1b4b] font-bold text-xs">
+                รีเซ็ตข้อมูลนักเรียนตัวอย่าง (6 คน)
+              </button>
+            </div>
           </div>
-          <button onclick="deleteAllRecords()" class="mt-6 w-full py-2.5 rounded-xl bg-rose-50 hover:bg-rose-600 text-rose-600 hover:text-white border border-rose-200 text-sm font-semibold transition">
-            ล้างข้อมูลผู้เข้าสอบทั้งหมด
+          <button type="button" onclick="openDeleteAllModal()"
+            class="comic-btn mt-6 w-full py-3 rounded-2xl bg-gradient-to-b from-rose-500 to-rose-600 text-white font-bold text-sm sm:text-base">
+            🗑️ ล้างข้อมูลผู้เข้าสอบทั้งหมด
           </button>
         </div>
       </div>
@@ -396,94 +952,138 @@
   </main>
 
   <!-- ==================== MODALS ==================== -->
-  <!-- Admin PIN Modal -->
-  <div id="modalAdminPin" class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl animate-fade">
+
+  <!-- 1. Admin PIN Modal -->
+  <div id="modalAdminPin" class="hidden fixed inset-0 z-50 bg-indigo-950/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="comic-card max-w-sm w-full p-6 bg-white animate-pop">
       <div class="text-center mb-5">
-        <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center mx-auto mb-3">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-          </svg>
+        <div class="w-16 h-16 rounded-2xl bg-amber-300 border-[3px] border-[#1e1b4b] shadow-[4px_4px_0px_#1e1b4b] flex items-center justify-center mx-auto mb-3 text-3xl">
+          🔐
         </div>
-        <h3 class="text-lg font-bold text-slate-900">เข้าสู่ระบบ Admin</h3>
-        <p class="text-xs text-slate-500 mt-1">กรุณากรอกรหัสผ่าน 4 หลัก</p>
+        <h3 class="text-xl font-bold text-[#1e1b4b]">เข้าสู่ระบบ Admin</h3>
+        <p class="text-xs text-slate-600 mt-1">กรุณากรอกรหัสผ่านครูผู้สอน 4 หลัก</p>
       </div>
       <form onsubmit="verifyAdminPin(event)" class="space-y-4">
         <input id="inputAdminPin" type="password" inputmode="numeric" maxlength="10" required placeholder="••••"
-          class="w-full text-center tracking-[0.5em] text-2xl font-bold px-4 py-3 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none" />
-        <p id="pinError" class="hidden text-xs text-rose-600 text-center font-medium">รหัสผ่านไม่ถูกต้อง</p>
-        <div class="grid grid-cols-2 gap-2.5">
-          <button type="button" onclick="closeAdminModal()" class="py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium">ยกเลิก</button>
-          <button type="submit" class="py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold">ยืนยัน</button>
+          class="comic-input w-full text-center tracking-[0.55em] text-2xl font-comic font-bold px-4 py-3" />
+        <p id="pinError" class="hidden text-xs text-rose-600 text-center font-bold bg-rose-100 py-1.5 rounded-xl border-2 border-rose-300">
+          ❌ รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่
+        </p>
+        <div class="grid grid-cols-2 gap-3">
+          <button type="button" onclick="closeAdminModal()" class="comic-btn-sm py-2.5 rounded-xl bg-slate-100 text-[#1e1b4b] font-bold text-sm">ยกเลิก</button>
+          <button type="submit" class="comic-btn-sm py-2.5 rounded-xl bg-indigo-600 text-white font-bold text-sm">ยืนยัน</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Edit Student Modal -->
-  <div id="modalEdit" class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl animate-fade">
-      <h3 class="text-lg font-bold text-slate-900 mb-4">แก้ไขข้อมูลผู้เข้าสอบ</h3>
+  <!-- 2. Edit Student Modal -->
+  <div id="modalEdit" class="hidden fixed inset-0 z-50 bg-indigo-950/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="comic-card max-w-md w-full p-6 bg-white animate-pop">
+      <h3 class="text-lg font-bold text-[#1e1b4b] mb-4 flex items-center gap-2">
+        <span>✏️</span> แก้ไขข้อมูลผู้เข้าสอบ
+      </h3>
       <form onsubmit="submitEditRecord(event)" class="space-y-4">
         <input type="hidden" id="editId" />
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="block text-xs font-medium text-slate-600 mb-1">ชื่อ</label>
-            <input id="editFirstName" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+            <label class="block text-xs font-bold text-[#1e1b4b] mb-1">ชื่อ</label>
+            <input id="editFirstName" required class="comic-input w-full px-3 py-2 text-sm font-medium" />
           </div>
           <div>
-            <label class="block text-xs font-medium text-slate-600 mb-1">นามสกุล</label>
-            <input id="editLastName" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+            <label class="block text-xs font-bold text-[#1e1b4b] mb-1">นามสกุล</label>
+            <input id="editLastName" required class="comic-input w-full px-3 py-2 text-sm font-medium" />
           </div>
         </div>
         <div class="grid grid-cols-3 gap-3">
           <div>
-            <label class="block text-xs font-medium text-slate-600 mb-1">ชั้น</label>
-            <select id="editClassroom" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm bg-white">
+            <label class="block text-xs font-bold text-[#1e1b4b] mb-1">ชั้น</label>
+            <select id="editClassroom" class="comic-input w-full px-3 py-2 text-sm font-semibold">
               <option value="ม.6/1">ม.6/1</option>
               <option value="ม.6/2">ม.6/2</option>
               <option value="ม.6/3">ม.6/3</option>
             </select>
           </div>
           <div>
-            <label class="block text-xs font-medium text-slate-600 mb-1">เลขที่</label>
-            <input id="editNumber" type="number" min="1" max="60" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+            <label class="block text-xs font-bold text-[#1e1b4b] mb-1">เลขที่</label>
+            <input id="editNumber" type="number" min="1" max="60" required class="comic-input w-full px-3 py-2 text-sm font-comic font-bold" />
           </div>
           <div>
-            <label class="block text-xs font-medium text-slate-600 mb-1">คะแนน (0-15)</label>
-            <input id="editScore" type="number" min="0" max="15" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+            <label class="block text-xs font-bold text-[#1e1b4b] mb-1">คะแนน (0-15)</label>
+            <input id="editScore" type="number" min="0" max="15" required class="comic-input w-full px-3 py-2 text-sm font-comic font-bold" />
           </div>
         </div>
-        <div class="flex justify-end gap-2 pt-2">
-          <button type="button" onclick="closeEditModal()" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-sm font-medium">ยกเลิก</button>
-          <button type="submit" class="px-5 py-2 rounded-xl bg-indigo-600 text-white text-sm font-semibold">บันทึก</button>
+        <div class="flex justify-end gap-2.5 pt-2">
+          <button type="button" onclick="closeEditModal()" class="comic-btn-sm px-4 py-2 rounded-xl bg-slate-100 text-[#1e1b4b] text-sm font-bold">ยกเลิก</button>
+          <button type="submit" class="comic-btn-sm px-5 py-2 rounded-xl bg-emerald-400 text-[#1e1b4b] text-sm font-bold">บันทึกการแก้ไข</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Detail Answers Modal -->
-  <div id="modalDetail" class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl animate-fade overflow-hidden">
-      <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between">
+  <!-- 3. Student Answer Details Modal -->
+  <div id="modalDetail" class="hidden fixed inset-0 z-50 bg-indigo-950/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="comic-card max-w-2xl w-full max-h-[85vh] flex flex-col bg-white animate-pop overflow-hidden">
+      <div class="px-5 py-4 bg-indigo-600 text-white border-b-[3px] border-[#1e1b4b] flex items-center justify-between gap-3">
         <div>
-          <h3 class="font-bold text-slate-900" id="detailTitle">รายละเอียดคำตอบ</h3>
-          <p class="text-xs text-slate-500" id="detailSub"></p>
+          <h3 id="detailTitle" class="font-bold text-base sm:text-lg">รายละเอียดคำตอบ</h3>
+          <p id="detailSub" class="text-xs text-indigo-100"></p>
         </div>
-        <button onclick="document.getElementById('modalDetail').classList.add('hidden')" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600">✕</button>
+        <button type="button" onclick="document.getElementById('modalDetail').classList.add('hidden')"
+          class="comic-btn-sm w-9 h-9 rounded-xl bg-rose-400 text-white font-bold flex items-center justify-center shrink-0">✕</button>
       </div>
-      <div id="detailBody" class="p-6 overflow-y-auto space-y-3 text-sm"></div>
+      <div id="detailBody" class="p-5 overflow-y-auto space-y-3 text-sm bg-slate-50"></div>
+    </div>
+  </div>
+
+  <!-- 4. Custom Confirm Dialog (แทน confirm()) -->
+  <div id="modalConfirm" class="hidden fixed inset-0 z-50 bg-indigo-950/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="comic-card max-w-sm w-full p-6 bg-white animate-pop text-center">
+      <div id="confirmIcon" class="w-14 h-14 rounded-2xl bg-amber-200 border-[3px] border-[#1e1b4b] shadow-[3px_3px_0px_#1e1b4b] flex items-center justify-center mx-auto mb-3 text-3xl">
+        ❓
+      </div>
+      <h3 id="confirmTitle" class="text-lg font-bold text-[#1e1b4b]">ยืนยันการทำรายการ</h3>
+      <p id="confirmMessage" class="text-sm text-slate-600 mt-1.5 mb-5"></p>
+      <div class="grid grid-cols-2 gap-3">
+        <button type="button" onclick="resolveConfirm(false)" class="comic-btn-sm py-2.5 rounded-xl bg-slate-100 text-[#1e1b4b] font-bold text-sm">ยกเลิก</button>
+        <button type="button" id="confirmOkBtn" onclick="resolveConfirm(true)" class="comic-btn-sm py-2.5 rounded-xl bg-rose-500 text-white font-bold text-sm">ยืนยัน</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Custom Delete All Modal (ต้องพิมพ์ DELETE แทน prompt()) -->
+  <div id="modalDeleteAll" class="hidden fixed inset-0 z-50 bg-indigo-950/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="comic-card max-w-sm w-full p-6 bg-white animate-pop">
+      <div class="text-center mb-4">
+        <div class="w-14 h-14 rounded-2xl bg-rose-500 text-white border-[3px] border-[#1e1b4b] shadow-[3px_3px_0px_#1e1b4b] flex items-center justify-center mx-auto mb-3 text-3xl">
+          🚨
+        </div>
+        <h3 class="text-lg font-bold text-rose-700">ล้างข้อมูลผู้เข้าสอบทั้งหมด?</h3>
+        <p class="text-xs text-slate-600 mt-1">
+          การกระทำนี้ไม่สามารถกู้คืนได้ พิมพ์คำว่า <strong class="font-comic text-rose-600">DELETE</strong> เพื่อยืนยัน
+        </p>
+      </div>
+      <form onsubmit="confirmDeleteAllRecords(event)" class="space-y-4">
+        <input id="inputDeleteConfirm" type="text" autocomplete="off" required placeholder="พิมพ์ DELETE ที่นี่"
+          class="comic-input w-full text-center font-comic font-bold uppercase px-4 py-2.5" />
+        <p id="deleteConfirmErr" class="hidden text-xs text-rose-600 text-center font-bold">กรุณาพิมพ์คำว่า DELETE ให้ถูกต้อง</p>
+        <div class="grid grid-cols-2 gap-3">
+          <button type="button" onclick="closeDeleteAllModal()" class="comic-btn-sm py-2.5 rounded-xl bg-slate-100 text-[#1e1b4b] font-bold text-sm">ยกเลิก</button>
+          <button type="submit" class="comic-btn-sm py-2.5 rounded-xl bg-rose-600 text-white font-bold text-sm">ลบทั้งหมด</button>
+        </div>
+      </form>
     </div>
   </div>
 
   <!-- Loading Overlay -->
-  <div id="loadingOverlay" class="hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center">
-    <div class="bg-white rounded-2xl px-6 py-5 shadow-xl flex items-center gap-3">
-      <div class="w-6 h-6 border-3 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-      <span id="loadingText" class="text-sm font-medium text-slate-700">กำลังดำเนินการ...</span>
+  <div id="loadingOverlay" class="hidden fixed inset-0 z-50 bg-indigo-950/50 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="comic-card-sm px-6 py-4 bg-white flex items-center gap-3.5">
+      <div class="w-7 h-7 border-4 border-indigo-600 border-t-amber-300 rounded-full animate-spin"></div>
+      <span id="loadingText" class="text-sm font-bold text-[#1e1b4b]">กำลังดำเนินการ...</span>
     </div>
   </div>
 
+  <!-- ==================== APPLICATION SCRIPT ==================== -->
   <script>
     // =========================================================================
     // 1. ตั้งค่า URL ของ Google Apps Script Web App ที่ได้จากการ Deploy code.gs
@@ -495,7 +1095,8 @@
     const isDemoMode = !SCRIPT_URL || SCRIPT_URL.includes("YOUR_GOOGLE_APPS_SCRIPT");
 
     // =========================================================================
-    // 2. ข้อสอบ Pre-test 15 ข้อ (Present Perfect Simple Tense - ง่าย กลาง ยาก คละกัน)
+    // 2. คลังข้อสอบ Pre-test 15 ข้อ (Present Perfect Simple Tense)
+    //    คละระดับ ง่าย (5) • กลาง (5) • ยาก (5)
     // =========================================================================
     const QUESTIONS = [
       {
@@ -605,14 +1206,21 @@
       }
     ];
 
-    const LEVEL_LABEL = {
-      easy: { text: "ง่าย", cls: "bg-emerald-100 text-emerald-700" },
-      medium: { text: "กลาง", cls: "bg-amber-100 text-amber-700" },
-      hard: { text: "ยาก", cls: "bg-rose-100 text-rose-700" }
+    const LEVEL_META = {
+      easy: { text: "ระดับง่าย", cls: "bg-emerald-200 text-emerald-950" },
+      medium: { text: "ระดับกลาง", cls: "bg-amber-200 text-amber-950" },
+      hard: { text: "ระดับยาก", cls: "bg-rose-200 text-rose-950" }
     };
 
+    const MASCOT_TIPS = [
+      "💬 Prof. Hoot: ค่อยๆ อ่านคำบอกเวลา (since, for, yet, just, ever, so far) ให้ดีนะ!",
+      "💬 Prof. Hoot: เยี่ยมเลย! จำไว้ว่า has been to = ไปและกลับมาแล้ว, has gone to = ยังอยู่ที่นั่น!",
+      "💬 Prof. Hoot: สู้ๆ นะนักผจญภัย มาถึงครึ่งทางแล้ว อย่าลืมเช็กประธานเอกพจน์/พหูพจน์ด้วย!",
+      "💬 Prof. Hoot: ใกล้ครบ 15 ข้อแล้ว! รางวัลถ้วยทองคำและแรงก์ S รออยู่ข้างหน้า!"
+    ];
+
     // =========================================================================
-    // 3. State Management
+    // 3. Application State
     // =========================================================================
     let appSettings = { isOpen: true, showReview: true, allowRetake: false };
     let currentStudent = null;
@@ -622,33 +1230,221 @@
     let adminSubmissions = [];
     let chartRoomsInstance = null;
     let chartDiffInstance = null;
+    let soundEnabled = true;
+    let audioCtx = null;
+    let confirmResolver = null;
 
     // =========================================================================
-    // 4. Local Demo Storage Helpers (ทำงานเฉพาะตอนยังไม่ได้ใส่ SCRIPT_URL)
+    // 4. Web Audio API Sound Effects (เสียงการ์ตูนน่ารัก ไม่มีไฟล์ภายนอก)
     // =========================================================================
+    function getAudioCtx() {
+      if (!soundEnabled) return null;
+      try {
+        if (!audioCtx) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          audioCtx = new AudioContextClass();
+        }
+        if (audioCtx.state === "suspended") audioCtx.resume();
+        return audioCtx;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function playTone(freq, duration = 0.12, type = "sine", vol = 0.12, delay = 0) {
+      const ctx = getAudioCtx();
+      if (!ctx) return;
+      try {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, ctx.currentTime + delay);
+        gain.gain.setValueAtTime(0.001, ctx.currentTime + delay);
+        gain.gain.exponentialRampToValueAtTime(vol, ctx.currentTime + delay + 0.015);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + delay + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(ctx.currentTime + delay);
+        osc.stop(ctx.currentTime + delay + duration + 0.02);
+      } catch (e) {}
+    }
+
+    function sfxPop() {
+      playTone(540, 0.08, "triangle", 0.11, 0);
+      playTone(760, 0.09, "sine", 0.09, 0.04);
+    }
+
+    function sfxStart() {
+      playTone(440, 0.1, "triangle", 0.12, 0);
+      playTone(554, 0.1, "triangle", 0.12, 0.08);
+      playTone(659, 0.15, "triangle", 0.14, 0.16);
+    }
+
+    function sfxError() {
+      playTone(240, 0.12, "sawtooth", 0.08, 0);
+      playTone(190, 0.16, "sawtooth", 0.08, 0.1);
+    }
+
+    function sfxFanfare() {
+      const notes = [523.25, 659.25, 783.99, 1046.5];
+      notes.forEach((n, idx) => playTone(n, idx === 3 ? 0.35 : 0.13, "triangle", 0.13, idx * 0.1));
+    }
+
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      document.getElementById("soundIcon").textContent = soundEnabled ? "🔊" : "🔇";
+      if (soundEnabled) sfxPop();
+      showToast(soundEnabled ? "เปิดเสียงเอฟเฟกต์การ์ตูนแล้ว 🔊" : "ปิดเสียงเอฟเฟกต์แล้ว 🔇", "info");
+    }
+
+    // =========================================================================
+    // 5. Custom Toast & Confirm Dialog (แทน alert/confirm)
+    // =========================================================================
+    function showToast(message, type = "info") {
+      const container = document.getElementById("toastContainer");
+      const styles = {
+        success: "bg-emerald-300 text-[#1e1b4b]",
+        error: "bg-rose-400 text-white",
+        warning: "bg-amber-300 text-[#1e1b4b]",
+        info: "bg-sky-200 text-[#1e1b4b]"
+      };
+      const icons = { success: "✅", error: "❌", warning: "⚡", info: "💬" };
+
+      const el = document.createElement("div");
+      el.className = `pointer-events-auto comic-card-sm px-4 py-3 font-bold text-xs sm:text-sm flex items-center gap-2 max-w-sm animate-pop ${styles[type] || styles.info}`;
+      el.innerHTML = `<span class="text-base shrink-0">${icons[type] || "💬"}</span><span>${escapeHtml(message)}</span>`;
+      container.appendChild(el);
+
+      setTimeout(() => {
+        el.style.transition = "opacity 0.25s ease, transform 0.25s ease";
+        el.style.opacity = "0";
+        el.style.transform = "translateY(8px)";
+        setTimeout(() => el.remove(), 260);
+      }, 3200);
+    }
+
+    function showConfirm({ title, message, icon = "❓", okText = "ยืนยัน", okClass = "bg-rose-500 text-white" }) {
+      return new Promise(resolve => {
+        confirmResolver = resolve;
+        document.getElementById("confirmIcon").textContent = icon;
+        document.getElementById("confirmTitle").textContent = title;
+        document.getElementById("confirmMessage").textContent = message;
+        const okBtn = document.getElementById("confirmOkBtn");
+        okBtn.textContent = okText;
+        okBtn.className = `comic-btn-sm py-2.5 rounded-xl font-bold text-sm ${okClass}`;
+        document.getElementById("modalConfirm").classList.remove("hidden");
+      });
+    }
+
+    function resolveConfirm(val) {
+      document.getElementById("modalConfirm").classList.add("hidden");
+      if (confirmResolver) {
+        const fn = confirmResolver;
+        confirmResolver = null;
+        fn(val);
+      }
+    }
+
+    // =========================================================================
+    // 6. Demo Mode Auto-Seeding (ข้อมูลตัวอย่าง 6 คน ม.6/1–6/3)
+    // =========================================================================
+    const DEMO_SEED_KEY = "tq_demo_seeded_v1";
+    const DEMO_SETTINGS_KEY = "tq_demo_settings_v1";
+    const DEMO_SUBS_KEY = "tq_demo_subs_v1";
+
+    function buildSeedRecord(id, hoursAgo, firstName, lastName, classroom, studentNumber, answers, timeSpentSec) {
+      let score = 0, easyScore = 0, mediumScore = 0, hardScore = 0;
+      QUESTIONS.forEach((q, idx) => {
+        if (answers[idx] === q.answer) {
+          score++;
+          if (q.level === "easy") easyScore++;
+          if (q.level === "medium") mediumScore++;
+          if (q.level === "hard") hardScore++;
+        }
+      });
+      return {
+        id,
+        timestamp: new Date(Date.now() - hoursAgo * 3600 * 1000).toISOString(),
+        firstName,
+        lastName,
+        classroom,
+        studentNumber,
+        score,
+        total: 15,
+        easyScore,
+        mediumScore,
+        hardScore,
+        timeSpentSec,
+        answers
+      };
+    }
+
+    function getSeedSubmissions() {
+      // เฉลย: [1, 1, 1, 2, 1, 2, 1, 1, 2, 2, 1, 0, 1, 2, 1]
+      return [
+        buildSeedRecord("DEMO-101", 5.2, "พิมพ์ชนก", "ศรีสุวรรณ", "ม.6/1", 4,  [1, 1, 1, 2, 1, 2, 1, 1, 2, 2, 1, 0, 1, 2, 1], 245), // 15/15
+        buildSeedRecord("DEMO-102", 4.5, "ธนกฤต", "วงศ์สวัสดิ์", "ม.6/1", 11, [1, 1, 1, 2, 1, 1, 1, 0, 2, 2, 1, 0, 0, 2, 1], 312), // 12/15
+        buildSeedRecord("DEMO-103", 3.8, "กัญญารัตน์", "สุขเจริญ", "ม.6/2", 7, [1, 1, 0, 2, 1, 2, 1, 1, 1, 3, 1, 0, 0, 1, 0], 289), // 10/15
+        buildSeedRecord("DEMO-104", 2.9, "ภูริภัทร", "อินทร์ทอง", "ม.6/2", 18, [1, 0, 1, 2, 0, 1, 1, 0, 0, 2, 0, 0, 0, 2, 0], 354), // 8/15
+        buildSeedRecord("DEMO-105", 1.7, "ณิชาภัทร", "แก้วมณี", "ม.6/3", 2,   [1, 1, 1, 2, 1, 2, 1, 1, 2, 2, 1, 0, 0, 2, 1], 228), // 14/15
+        buildSeedRecord("DEMO-106", 0.6, "วรภพ", "จันทร์เพ็ญ", "ม.6/3", 25,   [1, 1, 0, 2, 0, 1, 1, 0, 1, 3, 0, 1, 0, 1, 0], 410)  // 5/15
+      ];
+    }
+
+    function ensureDemoSeed() {
+      if (!isDemoMode) return;
+      if (!localStorage.getItem(DEMO_SEED_KEY)) {
+        localStorage.setItem(DEMO_SUBS_KEY, JSON.stringify(getSeedSubmissions()));
+        localStorage.setItem(DEMO_SETTINGS_KEY, JSON.stringify({ isOpen: true, showReview: true, allowRetake: false }));
+        localStorage.setItem(DEMO_SEED_KEY, "true");
+      }
+    }
+
     function demoGetSettings() {
-      const saved = localStorage.getItem("pp_demo_settings");
-      return saved ? JSON.parse(saved) : { isOpen: true, showReview: true, allowRetake: false };
+      try {
+        const saved = localStorage.getItem(DEMO_SETTINGS_KEY);
+        return saved ? JSON.parse(saved) : { isOpen: true, showReview: true, allowRetake: false };
+      } catch (e) {
+        return { isOpen: true, showReview: true, allowRetake: false };
+      }
     }
+
     function demoSaveSettings(s) {
-      localStorage.setItem("pp_demo_settings", JSON.stringify(s));
+      localStorage.setItem(DEMO_SETTINGS_KEY, JSON.stringify(s));
     }
+
     function demoGetSubmissions() {
-      const saved = localStorage.getItem("pp_demo_subs");
-      return saved ? JSON.parse(saved) : [];
+      try {
+        const saved = localStorage.getItem(DEMO_SUBS_KEY);
+        return saved ? JSON.parse(saved) : [];
+      } catch (e) {
+        return [];
+      }
     }
+
     function demoSaveSubmissions(arr) {
-      localStorage.setItem("pp_demo_subs", JSON.stringify(arr));
+      localStorage.setItem(DEMO_SUBS_KEY, JSON.stringify(arr));
+    }
+
+    function reseedDemoData() {
+      if (!isDemoMode) return;
+      demoSaveSubmissions(getSeedSubmissions());
+      adminSubmissions = demoGetSubmissions();
+      renderAdminDashboard();
+      sfxPop();
+      showToast("รีเซ็ตข้อมูลนักเรียนตัวอย่าง 6 คนเรียบร้อยแล้ว!", "success");
     }
 
     // =========================================================================
-    // 5. API Communication
+    // 7. API Communication (รองรับทั้ง Google Apps Script และ Demo Mode)
     // =========================================================================
     async function apiGet(params) {
       if (isDemoMode) {
-        if (params.action === "getStatus") return { status: "success", settings: demoGetSettings() };
+        if (params.action === "getStatus") {
+          return { status: "success", settings: demoGetSettings() };
+        }
         if (params.action === "getAllData") {
-          if (params.pin !== LOCAL_ADMIN_PIN) return { status: "error", message: "รหัสผ่านไม่ถูกต้อง" };
+          if (params.pin !== LOCAL_ADMIN_PIN) return { status: "error", message: "รหัสผ่าน Admin ไม่ถูกต้อง" };
           return { status: "success", settings: demoGetSettings(), submissions: demoGetSubmissions() };
         }
       }
@@ -661,10 +1457,13 @@
       if (isDemoMode) {
         if (payload.action === "submitTest") {
           const settings = demoGetSettings();
-          if (!settings.isOpen) return { status: "error", message: "ขณะนี้ปิดรับการทำแบบทดสอบแล้ว" };
+          if (!settings.isOpen) return { status: "error", message: "ขณะนี้ครูผู้สอนปิดรับการทำแบบทดสอบแล้ว" };
           const subs = demoGetSubmissions();
           if (!settings.allowRetake && subs.some(s => s.classroom === payload.classroom && Number(s.studentNumber) === Number(payload.studentNumber))) {
-            return { status: "error", message: `ชั้น ${payload.classroom} เลขที่ ${payload.studentNumber} ได้ส่งแบบทดสอบไปแล้ว` };
+            return {
+              status: "error",
+              message: `ชั้น ${payload.classroom} เลขที่ ${payload.studentNumber} ได้ส่งแบบทดสอบไปแล้ว (ไม่อนุญาตให้ทำซ้ำ)`
+            };
           }
           const newRec = { ...payload, id: "DEMO-" + Date.now(), timestamp: new Date().toISOString() };
           delete newRec.action;
@@ -672,7 +1471,10 @@
           demoSaveSubmissions(subs);
           return { status: "success", id: newRec.id, settings };
         }
-        if (payload.pin !== LOCAL_ADMIN_PIN) return { status: "error", message: "รหัสผ่าน Admin ไม่ถูกต้อง" };
+
+        if (payload.pin !== LOCAL_ADMIN_PIN) {
+          return { status: "error", message: "รหัสผ่าน Admin ไม่ถูกต้อง" };
+        }
         if (payload.action === "adminLogin") {
           return { status: "success", settings: demoGetSettings(), submissions: demoGetSubmissions() };
         }
@@ -682,8 +1484,12 @@
         }
         if (payload.action === "editRecord") {
           const subs = demoGetSubmissions().map(s => s.id === payload.id ? {
-            ...s, firstName: payload.firstName, lastName: payload.lastName,
-            classroom: payload.classroom, studentNumber: Number(payload.studentNumber), score: Number(payload.score)
+            ...s,
+            firstName: payload.firstName,
+            lastName: payload.lastName,
+            classroom: payload.classroom,
+            studentNumber: Number(payload.studentNumber),
+            score: Number(payload.score)
           } : s);
           demoSaveSubmissions(subs);
           return { status: "success" };
@@ -708,12 +1514,13 @@
     }
 
     // =========================================================================
-    // 6. Initialization & Navigation
+    // 8. Navigation & App Initialization
     // =========================================================================
     function showLoading(text = "กำลังโหลด...") {
       document.getElementById("loadingText").textContent = text;
       document.getElementById("loadingOverlay").classList.remove("hidden");
     }
+
     function hideLoading() {
       document.getElementById("loadingOverlay").classList.add("hidden");
     }
@@ -725,21 +1532,31 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    function goHomeIfSafe() {
-      if (!document.getElementById("viewQuiz").classList.contains("hidden")) {
-        if (!confirm("คุณกำลังทำแบบทดสอบอยู่ ต้องการออกและล้างคำตอบหรือไม่?")) return;
+    async function handleLogoClick() {
+      const inQuiz = !document.getElementById("viewQuiz").classList.contains("hidden");
+      if (inQuiz) {
+        const ok = await showConfirm({
+          title: "ออกจากภารกิจชั่วคราว?",
+          message: "คุณกำลังทำแบบทดสอบอยู่ หากกลับหน้าแรกคำตอบที่เลือกไว้จะหายไปทั้งหมด",
+          icon: "🦉",
+          okText: "ออกเลย",
+          okClass: "bg-rose-500 text-white"
+        });
+        if (!ok) return;
         clearInterval(timerInterval);
       }
       resetToHome();
     }
 
     async function initApp() {
+      ensureDemoSeed();
       if (isDemoMode) {
         document.getElementById("demoBadge").classList.remove("hidden");
+        document.getElementById("demoReseedWrap").classList.remove("hidden");
       }
       try {
         const res = await apiGet({ action: "getStatus" });
-        if (res.status === "success") {
+        if (res.status === "success" && res.settings) {
           appSettings = res.settings;
           applyOpenState();
         }
@@ -751,44 +1568,54 @@
     function applyOpenState() {
       const closedAlert = document.getElementById("closedAlert");
       const btnStart = document.getElementById("btnStartQuiz");
+      const speech = document.getElementById("homeMascotSpeech");
       if (!appSettings.isOpen) {
         closedAlert.classList.remove("hidden");
         btnStart.disabled = true;
-        btnStart.classList.add("opacity-50", "cursor-not-allowed");
+        speech.textContent = "“ตอนนี้ประตูห้องสอบปิดอยู่ชั่วคราว รอครูเปิดระบบก่อนนะ!”";
       } else {
         closedAlert.classList.add("hidden");
         btnStart.disabled = false;
-        btnStart.classList.remove("opacity-50", "cursor-not-allowed");
+        speech.textContent = "“พร้อมพิชิต Present Perfect Simple แล้วหรือยัง? กรอกชื่อแล้วลุยภารกิจ 15 ข้อกันเลย!”";
       }
     }
 
     // =========================================================================
-    // 7. Quiz Logic
+    // 9. Quiz Flow
     // =========================================================================
     function startQuiz(e) {
       e.preventDefault();
       if (!appSettings.isOpen) {
-        alert("ขณะนี้ระบบปิดรับการทำแบบทดสอบแล้ว");
+        sfxError();
+        showToast("ขณะนี้ระบบปิดรับการทำแบบทดสอบแล้ว", "error");
         return;
       }
 
-      currentStudent = {
-        firstName: document.getElementById("inputFirstName").value.trim(),
-        lastName: document.getElementById("inputLastName").value.trim(),
-        classroom: document.getElementById("inputClassroom").value,
-        studentNumber: Number(document.getElementById("inputNumber").value)
-      };
+      const firstName = document.getElementById("inputFirstName").value.trim();
+      const lastName = document.getElementById("inputLastName").value.trim();
+      const classroom = document.getElementById("inputClassroom").value;
+      const studentNumber = Number(document.getElementById("inputNumber").value);
 
-      document.getElementById("quizStudentRoom").textContent = currentStudent.classroom;
-      document.getElementById("quizStudentName").textContent = `${currentStudent.firstName} ${currentStudent.lastName}`;
-      document.getElementById("quizStudentNo").textContent = `เลขที่ ${currentStudent.studentNumber}`;
+      if (!firstName || !lastName || !classroom || !studentNumber) {
+        sfxError();
+        showToast("กรุณากรอกข้อมูลนักเรียนให้ครบทุกช่อง", "warning");
+        return;
+      }
+
+      currentStudent = { firstName, lastName, classroom, studentNumber };
+
+      document.getElementById("quizStudentRoom").textContent = classroom;
+      document.getElementById("quizStudentName").textContent = `${firstName} ${lastName}`;
+      document.getElementById("quizStudentNo").textContent = `เลขที่ ${studentNumber}`;
 
       renderQuestions();
-      updateProgress();
+      updateProgress(false);
+      sfxStart();
       showView("viewQuiz");
 
       quizStartTime = Date.now();
       clearInterval(timerInterval);
+      document.getElementById("quizTimer").textContent = "00:00";
       timerInterval = setInterval(() => {
         const sec = Math.floor((Date.now() - quizStartTime) / 1000);
         document.getElementById("quizTimer").textContent = formatTime(sec);
@@ -797,41 +1624,60 @@
 
     function renderQuestions() {
       const letters = ["A", "B", "C", "D"];
+      const badgeColors = ["bg-indigo-500", "bg-violet-500", "bg-sky-500", "bg-rose-500", "bg-emerald-500"];
+
       const html = QUESTIONS.map((item, idx) => `
-        <div id="qCard_${item.id}" class="glass-card rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-200/90 transition">
-          <div class="flex items-start gap-3 mb-4">
-            <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white font-bold text-sm flex items-center justify-center shrink-0 font-en">
+        <article id="qCard_${item.id}" class="comic-card p-5 sm:p-6 bg-white transition">
+          <div class="flex items-start gap-3.5 mb-4">
+            <div class="w-10 h-10 rounded-2xl ${badgeColors[idx % badgeColors.length]} text-white border-[3px] border-[#1e1b4b] shadow-[3px_3px_0px_#1e1b4b] font-comic font-bold text-lg flex items-center justify-center shrink-0 -rotate-2">
               ${idx + 1}
-            </span>
-            <p class="text-slate-900 font-semibold text-base sm:text-lg font-en leading-relaxed pt-0.5">
-              ${item.q}
-            </p>
+            </div>
+            <div class="flex-1 pt-0.5">
+              <p class="font-comic font-semibold text-base sm:text-xl text-[#1e1b4b] leading-snug">
+                ${escapeHtml(item.q)}
+              </p>
+            </div>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pl-0 sm:pl-11">
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:pl-13">
             ${item.options.map((opt, optIdx) => `
-              <label class="cursor-pointer block">
-                <input type="radio" name="q_${item.id}" value="${optIdx}" onchange="updateProgress()" class="hidden option-radio" />
-                <div class="option-card flex items-center gap-3 p-3.5 rounded-xl border border-slate-200 bg-white">
-                  <span class="option-badge w-7 h-7 rounded-lg border border-slate-300 text-slate-600 font-bold text-xs flex items-center justify-center shrink-0 font-en">
+              <label class="cursor-pointer block select-none">
+                <input type="radio" name="q_${item.id}" value="${optIdx}" onchange="onSelectChoice()" class="hidden choice-radio" />
+                <div class="choice-tile flex items-center gap-3 p-3.5">
+                  <span class="choice-letter w-8 h-8 rounded-xl bg-slate-100 text-[#1e1b4b] font-comic font-bold text-sm flex items-center justify-center shrink-0">
                     ${letters[optIdx]}
                   </span>
-                  <span class="text-slate-800 font-en font-medium text-sm sm:text-base">${opt}</span>
+                  <span class="font-comic font-semibold text-sm sm:text-base text-[#1e1b4b]">${escapeHtml(opt)}</span>
                 </div>
               </label>
             `).join("")}
           </div>
-        </div>
+        </article>
       `).join("");
+
       document.getElementById("questionsContainer").innerHTML = html;
     }
 
-    function updateProgress() {
+    function onSelectChoice() {
+      sfxPop();
+      updateProgress(true);
+    }
+
+    function updateProgress(updateTip = true) {
       let answered = 0;
       QUESTIONS.forEach(q => {
         if (document.querySelector(`input[name="q_${q.id}"]:checked`)) answered++;
       });
+
+      const pct = (answered / QUESTIONS.length) * 100;
       document.getElementById("answeredCount").textContent = answered;
-      document.getElementById("quizProgressBar").style.width = `${(answered / QUESTIONS.length) * 100}%`;
+      document.getElementById("quizProgressBar").style.width = `${pct}%`;
+      document.getElementById("quizRunner").style.left = `calc(${Math.min(pct, 96)}% - 14px)`;
+
+      if (updateTip) {
+        const tipIdx = answered === 15 ? 3 : answered >= 8 ? 2 : answered >= 3 ? 1 : 0;
+        document.getElementById("quizMascotTip").textContent = MASCOT_TIPS[tipIdx];
+      }
     }
 
     async function submitQuiz() {
@@ -841,9 +1687,12 @@
         if (!checked) {
           const card = document.getElementById(`qCard_${q.id}`);
           card.scrollIntoView({ behavior: "smooth", block: "center" });
-          card.classList.add("ring-2", "ring-rose-400");
-          setTimeout(() => card.classList.remove("ring-2", "ring-rose-400"), 2000);
-          alert(`กรุณาตอบคำถามข้อที่ ${q.id} ให้ครบก่อนส่งครับ`);
+          card.classList.remove("animate-shake");
+          void card.offsetWidth;
+          card.classList.add("animate-shake", "ring-4", "ring-rose-400");
+          setTimeout(() => card.classList.remove("ring-4", "ring-rose-400"), 2200);
+          sfxError();
+          showToast(`ยังไม่ได้ตอบข้อที่ ${q.id} นะครับ! กรุณาตอบให้ครบทั้ง 15 ข้อ`, "warning");
           return;
         }
         userAnswers.push(Number(checked.value));
@@ -874,63 +1723,102 @@
         answers: userAnswers
       };
 
-      showLoading("กำลังบันทึกคำตอบ...");
+      showLoading("กำลังส่งคำตอบเข้าสู่ระบบ...");
       try {
         const res = await apiPost(payload);
         hideLoading();
         if (res.status !== "success") {
-          alert(res.message || "เกิดข้อผิดพลาดในการส่งคำตอบ");
+          sfxError();
+          showToast(res.message || "เกิดข้อผิดพลาดในการส่งคำตอบ", "error");
           return;
         }
         if (res.settings) appSettings = res.settings;
         renderResult(payload);
         showView("viewResult");
+        sfxFanfare();
+        launchConfetti();
+        showToast("บันทึกคะแนนเรียบร้อยแล้ว!", "success");
       } catch (err) {
         hideLoading();
-        alert("ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้ กรุณาลองใหม่อีกครั้ง");
+        sfxError();
+        showToast("ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้ กรุณาลองใหม่อีกครั้ง", "error");
       }
     }
 
     function renderResult(data) {
+      const pct = Math.round((data.score / data.total) * 100);
+      let rank = { title: "C-RANK • TENSE APPRENTICE", stars: 1, quote: "🦉 Prof. Hoot: เริ่มต้นได้ดี! มาทบทวนเฉลยด้านล่างแล้วลุยต่อในคาบเรียนกันนะ" };
+      if (data.score >= 13) {
+        rank = { title: "S-RANK • GRAMMAR MASTER", stars: 3, quote: "🦉 Prof. Hoot: สุดยอดระดับตำนาน! พื้นฐาน Present Perfect แน่นปึ้กมาก!" };
+      } else if (data.score >= 10) {
+        rank = { title: "A-RANK • GRAMMAR KNIGHT", stars: 3, quote: "🦉 Prof. Hoot: เก่งมาก! เก็บรายละเอียดข้อระดับยากอีกนิดเดียวก็เต็มแล้ว!" };
+      } else if (data.score >= 7) {
+        rank = { title: "B-RANK • SKY EXPLORER", stars: 2, quote: "🦉 Prof. Hoot: ทำได้ไม่เลวเลย! ลองดูจุดที่พลาดเพื่ออัปเลเวลให้สูงขึ้นนะ" };
+      }
+
+      document.getElementById("resRankRibbon").textContent = rank.title;
       document.getElementById("resStudentInfo").textContent =
         `${data.firstName} ${data.lastName} (${data.classroom} เลขที่ ${data.studentNumber})`;
       document.getElementById("resScore").textContent = data.score;
-      const pct = Math.round((data.score / data.total) * 100);
       document.getElementById("resMeta").textContent = `ใช้เวลา ${formatTime(data.timeSpentSec)} • คิดเป็น ${pct}%`;
+      document.getElementById("resMascotQuote").textContent = rank.quote;
       document.getElementById("resEasy").textContent = data.easyScore;
       document.getElementById("resMedium").textContent = data.mediumScore;
       document.getElementById("resHard").textContent = data.hardScore;
 
+      // Render 3 Cartoon Stars
+      let starsHtml = "";
+      for (let i = 1; i <= 3; i++) {
+        const lit = i <= rank.stars;
+        starsHtml += `
+          <svg class="w-9 h-9 sm:w-10 sm:h-10 star-pop" style="animation-delay: ${i * 0.14}s" viewBox="0 0 48 48" fill="none">
+            <path d="M24 4L29.6 16.4L43 18L33 27.3L35.7 40.6L24 34L12.3 40.6L15 27.3L5 18L18.4 16.4L24 4Z"
+              fill="${lit ? '#FDE047' : '#475569'}" stroke="#1E1B4B" stroke-width="3.5" stroke-linejoin="round"/>
+          </svg>
+        `;
+      }
+      document.getElementById("resStars").innerHTML = starsHtml;
+
+      // Render Answer Review
       const reviewEl = document.getElementById("reviewSection");
       if (!appSettings.showReview) {
-        reviewEl.innerHTML = `<div class="glass-card rounded-2xl p-6 text-center text-sm text-slate-500">ครูผู้สอนตั้งค่าซ่อนเฉลยหลังทำแบบทดสอบไว้</div>`;
+        reviewEl.innerHTML = `
+          <div class="comic-card-sm p-6 text-center bg-white">
+            <p class="text-2xl mb-1">🙈</p>
+            <p class="font-bold text-slate-700 text-sm">ครูผู้สอนตั้งค่าซ่อนเฉลยหลังทำแบบทดสอบไว้</p>
+          </div>`;
         return;
       }
 
       const letters = ["A", "B", "C", "D"];
       reviewEl.innerHTML = `
-        <h3 class="text-lg font-bold text-slate-800 px-1">เฉลยและคำอธิบายรายข้อ</h3>
+        <div class="flex items-center gap-2 px-1">
+          <span class="text-2xl">📖</span>
+          <h3 class="text-lg sm:text-xl font-bold text-[#1e1b4b]">เฉลยและคำอธิบายรายข้อ (15 ข้อ)</h3>
+        </div>
         ${QUESTIONS.map((q, i) => {
           const userAns = data.answers[i];
           const isCorrect = userAns === q.answer;
-          const lvl = LEVEL_LABEL[q.level];
+          const lvl = LEVEL_META[q.level];
           return `
-            <div class="glass-card rounded-2xl p-5 border-l-4 ${isCorrect ? 'border-l-emerald-500' : 'border-l-rose-500'}">
+            <div class="comic-card-sm p-5 bg-white border-l-[10px] ${isCorrect ? 'border-l-emerald-400' : 'border-l-rose-400'}">
               <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-                <span class="text-xs font-bold ${isCorrect ? 'text-emerald-600' : 'text-rose-600'}">
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-xl border-2 border-[#1e1b4b] ${isCorrect ? 'bg-emerald-200 text-emerald-950' : 'bg-rose-200 text-rose-950'}">
                   ข้อที่ ${q.id} • ${isCorrect ? 'ตอบถูกต้อง ✓' : 'ตอบผิด ✕'}
                 </span>
-                <span class="text-xs font-medium px-2 py-0.5 rounded-full ${lvl.cls}">ระดับ${lvl.text}</span>
+                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full border-2 border-[#1e1b4b] ${lvl.cls}">
+                  ${lvl.text}
+                </span>
               </div>
-              <p class="font-en font-semibold text-slate-900 mb-2">${q.q}</p>
+              <p class="font-comic font-semibold text-base text-[#1e1b4b] mb-2.5">${escapeHtml(q.q)}</p>
               <div class="text-sm space-y-1">
-                <p class="${isCorrect ? 'text-emerald-700' : 'text-rose-600'}">
-                  คำตอบของคุณ: <strong class="font-en">${letters[userAns]}. ${q.options[userAns]}</strong>
+                <p class="font-medium ${isCorrect ? 'text-emerald-700' : 'text-rose-600'}">
+                  คำตอบของคุณ: <strong class="font-comic">${letters[userAns]}. ${escapeHtml(q.options[userAns])}</strong>
                 </p>
-                ${!isCorrect ? `<p class="text-emerald-700">คำตอบที่ถูกต้อง: <strong class="font-en">${letters[q.answer]}. ${q.options[q.answer]}</strong></p>` : ""}
-                <p class="text-xs text-slate-600 bg-slate-50 rounded-xl p-2.5 mt-2 border border-slate-100">
-                  💡 ${q.explain}
-                </p>
+                ${!isCorrect ? `<p class="font-medium text-emerald-700">คำตอบที่ถูกต้อง: <strong class="font-comic">${letters[q.answer]}. ${escapeHtml(q.options[q.answer])}</strong></p>` : ""}
+                <div class="mt-2.5 p-3 rounded-xl bg-amber-50 border-2 border-amber-200 text-xs sm:text-sm text-slate-700">
+                  <strong class="text-indigo-700">💡 คำอธิบาย:</strong> ${escapeHtml(q.explain)}
+                </div>
               </div>
             </div>
           `;
@@ -945,9 +1833,64 @@
     }
 
     // =========================================================================
-    // 8. Admin Panel Logic (PIN: 7846)
+    // 10. Confetti Celebration Animation (Canvas)
+    // =========================================================================
+    function launchConfetti() {
+      const canvas = document.getElementById("confettiCanvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const colors = ["#fbbf24", "#fb7185", "#34d399", "#38bdf8", "#818cf8", "#f472b6"];
+      const pieces = Array.from({ length: 110 }, () => ({
+        x: Math.random() * canvas.width,
+        y: -20 - Math.random() * 200,
+        w: 8 + Math.random() * 7,
+        h: 6 + Math.random() * 6,
+        vx: (Math.random() - 0.5) * 4,
+        vy: 3 + Math.random() * 4.5,
+        rot: Math.random() * Math.PI * 2,
+        vRot: (Math.random() - 0.5) * 0.22,
+        color: colors[Math.floor(Math.random() * colors.length)]
+      }));
+
+      let frames = 0;
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let active = 0;
+        pieces.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.05;
+          p.rot += p.vRot;
+          if (p.y < canvas.height + 30) {
+            active++;
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rot);
+            ctx.fillStyle = p.color;
+            ctx.strokeStyle = "#1e1b4b";
+            ctx.lineWidth = 1.5;
+            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+            ctx.strokeRect(-p.w / 2, -p.h / 2, p.w, p.h);
+            ctx.restore();
+          }
+        });
+        frames++;
+        if (active > 0 && frames < 240) {
+          requestAnimationFrame(draw);
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+
+    // =========================================================================
+    // 11. Admin Dashboard Logic (PIN: 7846)
     // =========================================================================
     function openAdminModal() {
+      sfxPop();
       if (adminPinSession) {
         showView("viewAdmin");
         loadAdminData();
@@ -966,48 +1909,57 @@
     async function verifyAdminPin(e) {
       e.preventDefault();
       const pin = document.getElementById("inputAdminPin").value.trim();
-      showLoading("กำลังตรวจสอบสิทธิ์...");
+      showLoading("กำลังตรวจสอบรหัสผ่าน Admin...");
       try {
         const res = await apiPost({ action: "adminLogin", pin });
         hideLoading();
         if (res.status === "success") {
           adminPinSession = pin;
-          appSettings = res.settings;
+          appSettings = res.settings || appSettings;
           adminSubmissions = res.submissions || [];
           closeAdminModal();
           showView("viewAdmin");
           renderAdminDashboard();
+          sfxStart();
+          showToast("เข้าสู่ระบบ Admin สำเร็จ!", "success");
         } else {
+          sfxError();
           document.getElementById("pinError").classList.remove("hidden");
         }
       } catch (err) {
         hideLoading();
-        alert("ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้");
+        sfxError();
+        showToast("ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้", "error");
       }
     }
 
     async function loadAdminData() {
-      showLoading("กำลังอัปเดตข้อมูล...");
+      showLoading("กำลังอัปเดตข้อมูลล่าสุด...");
       try {
         const res = await apiGet({ action: "getAllData", pin: adminPinSession });
         hideLoading();
         if (res.status === "success") {
-          appSettings = res.settings;
+          appSettings = res.settings || appSettings;
           adminSubmissions = res.submissions || [];
           renderAdminDashboard();
+          showToast("อัปเดตข้อมูลเรียบร้อยแล้ว", "info");
+        } else {
+          showToast(res.message || "โหลดข้อมูลไม่สำเร็จ", "error");
         }
       } catch (err) {
         hideLoading();
-        alert("โหลดข้อมูลไม่สำเร็จ");
+        showToast("เกิดข้อผิดพลาดในการโหลดข้อมูล", "error");
       }
     }
 
     function exitAdmin() {
       adminPinSession = "";
+      sfxPop();
       resetToHome();
     }
 
     function switchAdminTab(tab) {
+      sfxPop();
       const map = {
         students: { btn: "tabBtnStudents", panel: "adminTabStudents" },
         analysis: { btn: "tabBtnAnalysis", panel: "adminTabAnalysis" },
@@ -1018,8 +1970,8 @@
         document.getElementById(map[k].panel).classList.toggle("hidden", !active);
         const btn = document.getElementById(map[k].btn);
         btn.className = active
-          ? "px-4 py-2 rounded-xl text-sm font-semibold bg-indigo-600 text-white transition whitespace-nowrap"
-          : "px-4 py-2 rounded-xl text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 transition whitespace-nowrap";
+          ? "comic-btn-sm px-4 py-2.5 rounded-2xl text-sm font-bold bg-amber-300 text-[#1e1b4b]"
+          : "comic-btn-sm px-4 py-2.5 rounded-2xl text-sm font-bold bg-white text-slate-700 hover:bg-slate-50";
       });
     }
 
@@ -1031,9 +1983,9 @@
       const c2 = subs.filter(s => s.classroom === "ม.6/2");
       const c3 = subs.filter(s => s.classroom === "ม.6/3");
 
-      const avg = total ? (subs.reduce((a, b) => a + b.score, 0) / total) : 0;
-      const max = total ? Math.max(...subs.map(s => s.score)) : 0;
-      const min = total ? Math.min(...subs.map(s => s.score)) : 0;
+      const avg = total ? (subs.reduce((a, b) => a + Number(b.score || 0), 0) / total) : 0;
+      const max = total ? Math.max(...subs.map(s => Number(s.score || 0))) : 0;
+      const min = total ? Math.min(...subs.map(s => Number(s.score || 0))) : 0;
 
       document.getElementById("kpiTotal").textContent = total;
       document.getElementById("kpiRooms").textContent = `6/1: ${c1.length} • 6/2: ${c2.length} • 6/3: ${c3.length}`;
@@ -1044,13 +1996,12 @@
 
       const statusEl = document.getElementById("kpiStatusText");
       statusEl.textContent = appSettings.isOpen ? "● เปิดรับคำตอบ" : "● ปิดรับคำตอบ";
-      statusEl.className = `text-xl font-bold mt-2 ${appSettings.isOpen ? "text-emerald-600" : "text-rose-600"}`;
-      document.getElementById("kpiModeText").textContent = isDemoMode ? "โหมดทดสอบ (LocalStorage)" : "เชื่อมต่อ Google Sheets";
+      statusEl.className = `text-lg sm:text-xl font-bold mt-2 ${appSettings.isOpen ? "text-emerald-700" : "text-rose-600"}`;
+      document.getElementById("kpiModeText").textContent = isDemoMode ? "โหมดจำลอง (Local Demo)" : "เชื่อมต่อ Google Sheets";
 
-      // Settings checkboxes
-      document.getElementById("setIsOpen").checked = appSettings.isOpen;
-      document.getElementById("setShowReview").checked = appSettings.showReview;
-      document.getElementById("setAllowRetake").checked = appSettings.allowRetake;
+      document.getElementById("setIsOpen").checked = Boolean(appSettings.isOpen);
+      document.getElementById("setShowReview").checked = Boolean(appSettings.showReview);
+      document.getElementById("setAllowRetake").checked = Boolean(appSettings.allowRetake);
 
       renderCharts(c1, c2, c3, subs);
       renderAdminTable();
@@ -1058,7 +2009,7 @@
     }
 
     function renderCharts(c1, c2, c3, subs) {
-      const avgOf = arr => arr.length ? Number((arr.reduce((a, b) => a + b.score, 0) / arr.length).toFixed(2)) : 0;
+      const avgOf = arr => arr.length ? Number((arr.reduce((a, b) => a + Number(b.score || 0), 0) / arr.length).toFixed(2)) : 0;
 
       if (chartRoomsInstance) chartRoomsInstance.destroy();
       chartRoomsInstance = new Chart(document.getElementById("chartRooms"), {
@@ -1068,14 +2019,20 @@
           datasets: [{
             label: "คะแนนเฉลี่ย (เต็ม 15)",
             data: [avgOf(c1), avgOf(c2), avgOf(c3)],
-            backgroundColor: ["#6366f1", "#8b5cf6", "#06b6d4"],
-            borderRadius: 10,
-            maxBarThickness: 48
+            backgroundColor: ["#6366f1", "#fb7185", "#38bdf8"],
+            borderColor: "#1e1b4b",
+            borderWidth: 3,
+            borderRadius: 12,
+            maxBarThickness: 54
           }]
         },
         options: {
-          responsive: true, maintainAspectRatio: false,
-          scales: { y: { beginAtZero: true, max: 15 } },
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: { beginAtZero: true, max: 15, grid: { color: "rgba(30,27,75,0.08)" } },
+            x: { grid: { display: false } }
+          },
           plugins: { legend: { display: false } }
         }
       });
@@ -1094,14 +2051,20 @@
           datasets: [{
             label: "% ตอบถูกเฉลี่ย",
             data: [pctLevel("easyScore"), pctLevel("mediumScore"), pctLevel("hardScore")],
-            backgroundColor: ["#10b981", "#f59e0b", "#f43f5e"],
-            borderRadius: 10,
-            maxBarThickness: 48
+            backgroundColor: ["#34d399", "#fbbf24", "#fb7185"],
+            borderColor: "#1e1b4b",
+            borderWidth: 3,
+            borderRadius: 12,
+            maxBarThickness: 54
           }]
         },
         options: {
-          responsive: true, maintainAspectRatio: false,
-          scales: { y: { beginAtZero: true, max: 100, ticks: { callback: v => v + "%" } } },
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: { beginAtZero: true, max: 100, ticks: { callback: v => v + "%" }, grid: { color: "rgba(30,27,75,0.08)" } },
+            x: { grid: { display: false } }
+          },
           plugins: { legend: { display: false } }
         }
       });
@@ -1128,30 +2091,32 @@
 
       const tbody = document.getElementById("adminTableBody");
       if (!list.length) {
-        tbody.innerHTML = `<tr><td colspan="7" class="py-10 text-center text-slate-400">ยังไม่มีข้อมูลผู้เข้าสอบ</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="7" class="py-10 text-center text-slate-400 font-semibold">ยังไม่มีข้อมูลผู้เข้าสอบในเงื่อนไขที่เลือก</td></tr>`;
         return;
       }
 
       tbody.innerHTML = list.map(s => {
-        const badgeColor = s.score >= 12 ? "bg-emerald-100 text-emerald-700"
-          : s.score >= 8 ? "bg-amber-100 text-amber-700"
-          : "bg-rose-100 text-rose-700";
+        const badgeColor = s.score >= 12 ? "bg-emerald-200 text-emerald-950"
+          : s.score >= 8 ? "bg-amber-200 text-amber-950"
+          : "bg-rose-200 text-rose-950";
         return `
-          <tr class="hover:bg-slate-50/80 transition">
-            <td class="py-3 px-3 font-medium text-indigo-700">${escapeHtml(s.classroom)}</td>
-            <td class="py-3 px-3 font-en">${s.studentNumber}</td>
-            <td class="py-3 px-3 font-medium text-slate-800">${escapeHtml(s.firstName)} ${escapeHtml(s.lastName)}</td>
-            <td class="py-3 px-3 text-center">
-              <span class="inline-block px-2.5 py-0.5 rounded-full font-bold font-en text-xs ${badgeColor}">${s.score}/15</span>
+          <tr class="hover:bg-amber-50/70 transition">
+            <td class="py-3 px-3">
+              <span class="px-2 py-0.5 rounded-lg bg-indigo-100 text-indigo-800 font-bold text-xs border border-[#1e1b4b]">${escapeHtml(s.classroom)}</span>
             </td>
-            <td class="py-3 px-3 text-center text-xs text-slate-500 hidden sm:table-cell font-en">
+            <td class="py-3 px-3 font-comic font-bold">${s.studentNumber}</td>
+            <td class="py-3 px-3 font-bold text-[#1e1b4b]">${escapeHtml(s.firstName)} ${escapeHtml(s.lastName)}</td>
+            <td class="py-3 px-3 text-center">
+              <span class="inline-block px-2.5 py-0.5 rounded-full border-2 border-[#1e1b4b] font-comic font-bold text-xs ${badgeColor}">${s.score}/15</span>
+            </td>
+            <td class="py-3 px-3 text-center text-xs font-comic font-bold text-slate-600 hidden sm:table-cell">
               ${s.easyScore} / ${s.mediumScore} / ${s.hardScore}
             </td>
-            <td class="py-3 px-3 text-xs text-slate-400 hidden md:table-cell">${formatDate(s.timestamp)}</td>
+            <td class="py-3 px-3 text-xs text-slate-500 hidden md:table-cell">${formatDate(s.timestamp)}</td>
             <td class="py-3 px-3 text-right whitespace-nowrap space-x-1">
-              <button onclick="viewDetail('${s.id}')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700 hover:text-indigo-700 text-xs font-medium">ดู</button>
-              <button onclick="openEditModal('${s.id}')" class="px-2.5 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-700 text-xs font-medium">แก้</button>
-              <button onclick="deleteRecord('${s.id}')" class="px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-600 text-xs font-medium">ลบ</button>
+              <button type="button" onclick="viewDetail('${s.id}')" class="px-2.5 py-1 rounded-lg bg-sky-200 hover:bg-sky-300 border-2 border-[#1e1b4b] text-[#1e1b4b] text-xs font-bold">ดู</button>
+              <button type="button" onclick="openEditModal('${s.id}')" class="px-2.5 py-1 rounded-lg bg-amber-200 hover:bg-amber-300 border-2 border-[#1e1b4b] text-[#1e1b4b] text-xs font-bold">แก้</button>
+              <button type="button" onclick="deleteRecord('${s.id}')" class="px-2.5 py-1 rounded-lg bg-rose-200 hover:bg-rose-300 border-2 border-[#1e1b4b] text-rose-950 text-xs font-bold">ลบ</button>
             </td>
           </tr>
         `;
@@ -1167,20 +2132,23 @@
           if (Array.isArray(s.answers) && Number(s.answers[idx]) === q.answer) correctCount++;
         });
         const pct = total ? Math.round((correctCount / total) * 100) : 0;
-        const lvl = LEVEL_LABEL[q.level];
-        const barColor = pct >= 70 ? "bg-emerald-500" : pct >= 40 ? "bg-amber-500" : "bg-rose-500";
+        const lvl = LEVEL_META[q.level];
+        const barColor = pct >= 70 ? "bg-emerald-400" : pct >= 40 ? "bg-amber-400" : "bg-rose-400";
         return `
-          <div class="p-4 rounded-xl border border-slate-200 bg-white/80">
+          <div class="p-4 rounded-2xl border-[2.5px] border-[#1e1b4b] bg-slate-50">
             <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
               <div class="flex items-center gap-2">
-                <span class="font-bold text-indigo-600 text-sm">ข้อ ${q.id}</span>
-                <span class="text-xs px-2 py-0.5 rounded-full font-medium ${lvl.cls}">ระดับ${lvl.text}</span>
+                <span class="font-comic font-bold text-indigo-700 text-sm">ข้อ ${q.id}</span>
+                <span class="text-xs px-2.5 py-0.5 rounded-full border-2 border-[#1e1b4b] font-bold ${lvl.cls}">${lvl.text}</span>
               </div>
-              <span class="text-xs font-semibold text-slate-700">ตอบถูก ${correctCount}/${total} คน (${pct}%)</span>
+              <span class="text-xs font-bold text-[#1e1b4b]">ตอบถูก ${correctCount}/${total} คน (${pct}%)</span>
             </div>
-            <p class="text-sm font-en font-medium text-slate-800 mb-2">${q.q} <span class="text-emerald-600 font-semibold">[เฉลย: ${letters[q.answer]}. ${q.options[q.answer]}]</span></p>
-            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-              <div class="h-full ${barColor} transition-all" style="width: ${pct}%"></div>
+            <p class="text-sm font-comic font-semibold text-[#1e1b4b] mb-2">
+              ${escapeHtml(q.q)}
+              <span class="text-emerald-700">[เฉลย: ${letters[q.answer]}. ${escapeHtml(q.options[q.answer])}]</span>
+            </p>
+            <div class="w-full h-3 bg-white rounded-full border-2 border-[#1e1b4b] overflow-hidden">
+              <div class="h-full ${barColor} transition-all duration-300" style="width: ${pct}%"></div>
             </div>
           </div>
         `;
@@ -1191,6 +2159,7 @@
     function viewDetail(id) {
       const s = adminSubmissions.find(x => x.id === id);
       if (!s) return;
+      sfxPop();
       const letters = ["A", "B", "C", "D"];
       document.getElementById("detailTitle").textContent = `${s.firstName} ${s.lastName} (${s.classroom} เลขที่ ${s.studentNumber})`;
       document.getElementById("detailSub").textContent = `คะแนน ${s.score}/15 • ใช้เวลา ${formatTime(s.timeSpentSec)} • ส่งเมื่อ ${formatDate(s.timestamp)}`;
@@ -1198,11 +2167,11 @@
         const ans = Array.isArray(s.answers) ? s.answers[i] : null;
         const ok = ans === q.answer;
         return `
-          <div class="p-3 rounded-xl border ${ok ? 'border-emerald-200 bg-emerald-50/40' : 'border-rose-200 bg-rose-50/40'}">
-            <p class="font-en font-semibold text-slate-800">${q.id}. ${q.q}</p>
-            <p class="text-xs mt-1">
-              ตอบ: <strong class="${ok ? 'text-emerald-700' : 'text-rose-600'}">${ans !== null ? letters[ans] + '. ' + q.options[ans] : '-'}</strong>
-              ${!ok ? ` | เฉลย: <strong class="text-emerald-700">${letters[q.answer]}. ${q.options[q.answer]}</strong>` : ''}
+          <div class="p-3.5 rounded-2xl border-2 border-[#1e1b4b] ${ok ? 'bg-emerald-50' : 'bg-rose-50'}">
+            <p class="font-comic font-semibold text-[#1e1b4b]">${q.id}. ${escapeHtml(q.q)}</p>
+            <p class="text-xs mt-1.5 font-medium">
+              นักเรียนตอบ: <strong class="font-comic ${ok ? 'text-emerald-700' : 'text-rose-600'}">${ans !== null && ans !== undefined ? letters[ans] + '. ' + escapeHtml(q.options[ans]) : '-'}</strong>
+              ${!ok ? ` | เฉลย: <strong class="font-comic text-emerald-700">${letters[q.answer]}. ${escapeHtml(q.options[q.answer])}</strong>` : ' ✅'}
             </p>
           </div>
         `;
@@ -1213,6 +2182,7 @@
     function openEditModal(id) {
       const s = adminSubmissions.find(x => x.id === id);
       if (!s) return;
+      sfxPop();
       document.getElementById("editId").value = s.id;
       document.getElementById("editFirstName").value = s.firstName;
       document.getElementById("editLastName").value = s.lastName;
@@ -1244,25 +2214,42 @@
         if (res.status === "success") {
           closeEditModal();
           await loadAdminData();
+          showToast("แก้ไขข้อมูลนักเรียนเรียบร้อยแล้ว", "success");
         } else {
-          alert(res.message || "แก้ไขไม่สำเร็จ");
+          sfxError();
+          showToast(res.message || "แก้ไขข้อมูลไม่สำเร็จ", "error");
         }
       } catch (err) {
         hideLoading();
-        alert("เกิดข้อผิดพลาดในการเชื่อมต่อ");
+        sfxError();
+        showToast("เกิดข้อผิดพลาดในการเชื่อมต่อ", "error");
       }
     }
 
     async function deleteRecord(id) {
-      if (!confirm("ยืนยันการลบข้อมูลนักเรียนคนนี้หรือไม่?")) return;
+      const s = adminSubmissions.find(x => x.id === id);
+      const ok = await showConfirm({
+        title: "ลบข้อมูลนักเรียนคนนี้?",
+        message: s ? `ต้องการลบคะแนนของ ${s.firstName} ${s.lastName} (${s.classroom} เลขที่ ${s.studentNumber}) ใช่หรือไม่?` : "ยืนยันการลบข้อมูลรายการนี้?",
+        icon: "🗑️",
+        okText: "ลบข้อมูล",
+        okClass: "bg-rose-500 text-white"
+      });
+      if (!ok) return;
+
       showLoading("กำลังลบข้อมูล...");
       try {
         const res = await apiPost({ action: "deleteRecord", pin: adminPinSession, id });
         hideLoading();
-        if (res.status === "success") await loadAdminData();
+        if (res.status === "success") {
+          await loadAdminData();
+          showToast("ลบข้อมูลเรียบร้อยแล้ว", "success");
+        } else {
+          showToast(res.message || "ลบข้อมูลไม่สำเร็จ", "error");
+        }
       } catch (err) {
         hideLoading();
-        alert("ลบข้อมูลไม่สำเร็จ");
+        showToast("เกิดข้อผิดพลาดในการลบข้อมูล", "error");
       }
     }
 
@@ -1279,41 +2266,72 @@
         if (res.status === "success") {
           appSettings = res.settings;
           renderAdminDashboard();
-          alert("บันทึกการตั้งค่าเรียบร้อยแล้ว");
+          sfxPop();
+          showToast("บันทึกการตั้งค่าระบบเรียบร้อยแล้ว!", "success");
+        } else {
+          sfxError();
+          showToast(res.message || "บันทึกการตั้งค่าไม่สำเร็จ", "error");
         }
       } catch (err) {
         hideLoading();
-        alert("บันทึกไม่สำเร็จ");
+        sfxError();
+        showToast("ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้", "error");
       }
     }
 
-    async function deleteAllRecords() {
-      if (!confirm("คำเตือน: ต้องการล้างข้อมูลคะแนนนักเรียนทั้งหมดใช่หรือไม่?")) return;
-      const confirmText = prompt("พิมพ์คำว่า DELETE เพื่อยืนยันการล้างข้อมูลทั้งหมด:");
-      if (confirmText !== "DELETE") return;
+    function openDeleteAllModal() {
+      document.getElementById("inputDeleteConfirm").value = "";
+      document.getElementById("deleteConfirmErr").classList.add("hidden");
+      document.getElementById("modalDeleteAll").classList.remove("hidden");
+      setTimeout(() => document.getElementById("inputDeleteConfirm").focus(), 100);
+    }
+
+    function closeDeleteAllModal() {
+      document.getElementById("modalDeleteAll").classList.add("hidden");
+    }
+
+    async function confirmDeleteAllRecords(e) {
+      e.preventDefault();
+      const val = document.getElementById("inputDeleteConfirm").value.trim().toUpperCase();
+      if (val !== "DELETE") {
+        sfxError();
+        document.getElementById("deleteConfirmErr").classList.remove("hidden");
+        return;
+      }
+      closeDeleteAllModal();
       showLoading("กำลังล้างข้อมูลทั้งหมด...");
       try {
         const res = await apiPost({ action: "deleteAllRecords", pin: adminPinSession });
         hideLoading();
         if (res.status === "success") {
           await loadAdminData();
-          alert("ล้างข้อมูลทั้งหมดเรียบร้อยแล้ว");
+          showToast("ล้างข้อมูลผู้เข้าสอบทั้งหมดเรียบร้อยแล้ว", "success");
+        } else {
+          showToast(res.message || "ล้างข้อมูลไม่สำเร็จ", "error");
         }
       } catch (err) {
         hideLoading();
-        alert("เกิดข้อผิดพลาด");
+        showToast("เกิดข้อผิดพลาดในการเชื่อมต่อ", "error");
       }
     }
 
     function exportCSV() {
       if (!adminSubmissions.length) {
-        alert("ยังไม่มีข้อมูลสำหรับส่งออก");
+        showToast("ยังไม่มีข้อมูลสำหรับส่งออกไฟล์ CSV", "warning");
         return;
       }
       const headers = ["ชั้น", "เลขที่", "ชื่อ", "นามสกุล", "คะแนนรวม(15)", "ง่าย(5)", "กลาง(5)", "ยาก(5)", "เวลาที่ใช้(วินาที)", "วันเวลาที่ส่ง"];
       const rows = adminSubmissions.map(s => [
-        s.classroom, s.studentNumber, `"${s.firstName}"`, `"${s.lastName}"`,
-        s.score, s.easyScore, s.mediumScore, s.hardScore, s.timeSpentSec, `"${formatDate(s.timestamp)}"`
+        s.classroom,
+        s.studentNumber,
+        `"${String(s.firstName).replace(/"/g, '""')}"`,
+        `"${String(s.lastName).replace(/"/g, '""')}"`,
+        s.score,
+        s.easyScore,
+        s.mediumScore,
+        s.hardScore,
+        s.timeSpentSec,
+        `"${formatDate(s.timestamp)}"`
       ]);
       const csv = "\uFEFF" + [headers.join(","), ...rows.map(r => r.join(","))].join("\n");
       const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
@@ -1323,28 +2341,38 @@
       a.download = `pretest_present_perfect_${new Date().toISOString().slice(0, 10)}.csv`;
       a.click();
       URL.revokeObjectURL(url);
+      sfxPop();
+      showToast("ดาวน์โหลดไฟล์ CSV (รองรับภาษาไทยใน Excel) แล้ว!", "success");
     }
 
     // =========================================================================
-    // 9. Utilities
+    // 12. Utility Functions
     // =========================================================================
     function formatTime(sec) {
-      const m = String(Math.floor(sec / 60)).padStart(2, "0");
-      const s = String(sec % 60).padStart(2, "0");
+      const sNum = Math.max(0, Number(sec) || 0);
+      const m = String(Math.floor(sNum / 60)).padStart(2, "0");
+      const s = String(sNum % 60).padStart(2, "0");
       return `${m}:${s}`;
     }
 
     function formatDate(iso) {
       if (!iso) return "-";
-      const d = new Date(iso);
-      return d.toLocaleString("th-TH", { dateStyle: "short", timeStyle: "short" });
+      try {
+        const d = new Date(iso);
+        return d.toLocaleString("th-TH", { dateStyle: "short", timeStyle: "short" });
+      } catch (e) {
+        return String(iso);
+      }
     }
 
     function escapeHtml(str) {
-      return String(str).replace(/[&<>"']/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
+      return String(str).replace(/[&<>"']/g, m => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[m]));
     }
 
-    initApp();
+    // เริ่มต้นระบบเมื่อโหลดหน้าเสร็จ
+    window.addEventListener("DOMContentLoaded", initApp);
   </script>
 </body>
 </html>
