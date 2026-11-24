@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pre-test: Present Perfect Simple Tense (ม.6)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Prompt', 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 50%, #f0f9ff 100%);
+      min-height: 100vh;
+    }
+    .font-en { font-family: 'Plus Jakarta Sans', 'Prompt', sans-serif; }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+    .option-card {
+      transition: all 0.18s ease;
+    }
+    .option-card:hover {
+      border-color: #6366f1;
+      background-color: #eef2ff;
+    }
+    .option-radio:checked + .option-card {
+      border-color: #4f46e5;
+      background-color: #eef2ff;
+      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25);
+    }
+    .option-radio:checked + .option-card .option-badge {
+      background-color: #4f46e5;
+      color: #ffffff;
+      border-color: #4f46e5;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade { animation: fadeIn 0.35s ease-out forwards; }
+  </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+  <!-- Top Navigation -->
+  <header class="sticky top-0 z-30 bg-white/85 backdrop-blur-md border-b border-slate-200/80">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3 cursor-pointer" onclick="goHomeIfSafe()">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center text-white font-bold shadow-md shadow-indigo-200">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="font-bold text-slate-900 leading-tight text-sm sm:text-base">English Pre-test</h1>
+          <p class="text-xs text-slate-500 font-en">Present Perfect Simple Tense</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <span id="demoBadge" class="hidden text-xs font-medium px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 border border-amber-200">
+          Demo Mode
+        </span>
+        <button onclick="openAdminModal()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium bg-slate-900 hover:bg-indigo-700 text-white transition shadow-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+          Admin
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+
+    <!-- ==================== VIEW 1: REGISTER / HOME ==================== -->
+    <section id="viewHome" class="max-w-xl mx-auto animate-fade">
+      <div class="glass-card rounded-3xl shadow-xl shadow-indigo-100/60 overflow-hidden">
+        <!-- Banner -->
+        <div class="bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 px-6 py-8 text-white relative overflow-hidden">
+          <div class="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-white/10"></div>
+          <div class="absolute -left-6 -bottom-10 w-28 h-28 rounded-full bg-white/10"></div>
+          <span class="inline-block text-xs font-semibold tracking-wider uppercase bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full mb-3">
+            แบบทดสอบก่อนเรียน • ระดับชั้น ม.6
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold font-en tracking-tight">Present Perfect Simple</h2>
+          <p class="text-indigo-100 text-sm mt-2">
+            แบบทดสอบปรนัย 4 ตัวเลือก จำนวน 15 ข้อ (คละระดับ ง่าย • กลาง • ยาก)
+          </p>
+        </div>
+
+        <!-- Closed Notice -->
+        <div id="closedAlert" class="hidden mx-6 mt-6 p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-sm flex items-start gap-3">
+          <svg class="w-5 h-5 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <div>
+            <p class="font-semibold">ระบบปิดรับการทำแบบทดสอบชั่วคราว</p>
+            <p class="text-xs mt-0.5 text-rose-600">กรุณาติดต่อครูผู้สอนเพื่อเปิดระบบ</p>
+          </div>
+        </div>
+
+        <!-- Student Form -->
+        <form id="studentForm" onsubmit="startQuiz(event)" class="p-6 sm:p-8 space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1.5">ชื่อ <span class="text-rose-500">*</span></label>
+              <input id="inputFirstName" type="text" required placeholder="เช่น กิตติพงศ์"
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition bg-white" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1.5">นามสกุล <span class="text-rose-500">*</span></label>
+              <input id="inputLastName" type="text" required placeholder="เช่น ใจดี"
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition bg-white" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1.5">ชั้น <span class="text-rose-500">*</span></label>
+              <select id="inputClassroom" required
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition bg-white">
+                <option value="" disabled selected>เลือกห้อง</option>
+                <option value="ม.6/1">ม.6/1</option>
+                <option value="ม.6/2">ม.6/2</option>
+                <option value="ม.6/3">ม.6/3</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1.5">เลขที่ <span class="text-rose-500">*</span></label>
+              <input id="inputNumber" type="number" min="1" max="60" required placeholder="เช่น 12"
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition bg-white" />
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <button id="btnStartQuiz" type="submit"
+              class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-semibold shadow-lg shadow-indigo-200 transition transform active:scale-[0.99] flex items-center justify-center gap-2">
+              <span>เริ่มทำแบบทดสอบ (15 ข้อ)</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 2: QUIZ ==================== -->
+    <section id="viewQuiz" class="hidden max-w-3xl mx-auto animate-fade">
+      <!-- Sticky Status Bar -->
+      <div class="sticky top-[72px] z-20 glass-card rounded-2xl p-4 mb-6 shadow-md shadow-slate-200/60">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+          <div class="flex items-center gap-2 text-sm">
+            <span class="px-2.5 py-1 rounded-lg bg-indigo-100 text-indigo-700 font-semibold" id="quizStudentRoom">ม.6/1</span>
+            <span class="font-medium text-slate-800" id="quizStudentName">ชื่อ นามสกุล</span>
+            <span class="text-slate-500 text-xs" id="quizStudentNo">เลขที่ 1</span>
+          </div>
+          <div class="flex items-center gap-3 text-sm">
+            <span class="font-medium text-slate-600">ทำแล้ว <strong id="answeredCount" class="text-indigo-600">0</strong>/15</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-en font-semibold text-xs" id="quizTimer">00:00</span>
+          </div>
+        </div>
+        <div class="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
+          <div id="quizProgressBar" class="h-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-300" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Questions Container -->
+      <div id="questionsContainer" class="space-y-5"></div>
+
+      <!-- Submit Button -->
+      <div class="mt-8 glass-card rounded-2xl p-6 text-center shadow-lg">
+        <p class="text-sm text-slate-500 mb-4">กรุณาตรวจสอบคำตอบให้ครบทั้ง 15 ข้อก่อนกดส่ง</p>
+        <button id="btnSubmitQuiz" onclick="submitQuiz()"
+          class="w-full sm:w-auto px-10 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold shadow-lg shadow-emerald-200 transition inline-flex items-center justify-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span>ส่งคำตอบ</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 3: RESULT ==================== -->
+    <section id="viewResult" class="hidden max-w-3xl mx-auto animate-fade">
+      <div class="glass-card rounded-3xl shadow-xl overflow-hidden mb-6">
+        <div class="bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 px-6 py-8 text-center text-white">
+          <p class="text-indigo-100 text-sm mb-1">บันทึกคะแนนเรียบร้อยแล้ว</p>
+          <h2 class="text-2xl font-bold" id="resStudentInfo">ชื่อ นามสกุล (ม.6/1 เลขที่ 1)</h2>
+          <div class="mt-6 inline-flex flex-col items-center justify-center w-36 h-36 rounded-full bg-white/15 backdrop-blur-md border-4 border-white/40">
+            <span class="text-5xl font-extrabold font-en" id="resScore">0</span>
+            <span class="text-sm text-indigo-100">เต็ม 15 คะแนน</span>
+          </div>
+          <p class="mt-4 text-sm text-indigo-100" id="resMeta">ใช้เวลา 00:00 • คิดเป็น 0%</p>
+        </div>
+
+        <!-- Breakdown by Difficulty -->
+        <div class="p-6 grid grid-cols-3 gap-3 sm:gap-4 text-center border-b border-slate-100">
+          <div class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-100">
+            <p class="text-xs font-medium text-emerald-700">ระดับง่าย</p>
+            <p class="text-xl font-bold text-emerald-800 font-en mt-1"><span id="resEasy">0</span>/5</p>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-amber-50 border border-amber-100">
+            <p class="text-xs font-medium text-amber-700">ระดับกลาง</p>
+            <p class="text-xl font-bold text-amber-800 font-en mt-1"><span id="resMedium">0</span>/5</p>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-rose-50 border border-rose-100">
+            <p class="text-xs font-medium text-rose-700">ระดับยาก</p>
+            <p class="text-xl font-bold text-rose-800 font-en mt-1"><span id="resHard">0</span>/5</p>
+          </div>
+        </div>
+
+        <div class="p-6 flex justify-center">
+          <button onclick="resetToHome()" class="px-6 py-2.5 rounded-xl bg-slate-900 hover:bg-indigo-700 text-white text-sm font-medium transition">
+            กลับหน้าแรก
+          </button>
+        </div>
+      </div>
+
+      <!-- Review Section (controlled by Admin setting) -->
+      <div id="reviewSection" class="space-y-4"></div>
+    </section>
+
+    <!-- ==================== VIEW 4: ADMIN DASHBOARD ==================== -->
+    <section id="viewAdmin" class="hidden animate-fade space-y-6">
+      <!-- Admin Header -->
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wider text-indigo-600">Teacher Control Center</span>
+          <h2 class="text-2xl font-bold text-slate-900">ระบบจัดการแบบทดสอบ (Admin)</h2>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <button onclick="loadAdminData()" class="px-3.5 py-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 text-sm font-medium shadow-sm transition inline-flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            รีเฟรช
+          </button>
+          <button onclick="exportCSV()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium shadow-sm transition inline-flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            ส่งออก CSV
+          </button>
+          <button onclick="exitAdmin()" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium shadow-sm transition">
+            ออกจาก Admin
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="glass-card rounded-2xl p-5 shadow-sm">
+          <p class="text-xs font-medium text-slate-500">ผู้เข้าสอบทั้งหมด</p>
+          <p class="text-3xl font-bold text-slate-900 font-en mt-1" id="kpiTotal">0</p>
+          <p class="text-xs text-slate-400 mt-1" id="kpiRooms">6/1: 0 • 6/2: 0 • 6/3: 0</p>
+        </div>
+        <div class="glass-card rounded-2xl p-5 shadow-sm">
+          <p class="text-xs font-medium text-slate-500">คะแนนเฉลี่ยรวม</p>
+          <p class="text-3xl font-bold text-indigo-600 font-en mt-1"><span id="kpiAvg">0.0</span><span class="text-base text-slate-400 font-normal"> /15</span></p>
+          <p class="text-xs text-slate-400 mt-1" id="kpiAvgPct">คิดเป็น 0%</p>
+        </div>
+        <div class="glass-card rounded-2xl p-5 shadow-sm">
+          <p class="text-xs font-medium text-slate-500">คะแนนสูงสุด / ต่ำสุด</p>
+          <p class="text-3xl font-bold text-emerald-600 font-en mt-1"><span id="kpiMax">0</span> <span class="text-slate-300 font-normal">/</span> <span class="text-rose-500" id="kpiMin">0</span></p>
+          <p class="text-xs text-slate-400 mt-1">จากคะแนนเต็ม 15</p>
+        </div>
+        <div class="glass-card rounded-2xl p-5 shadow-sm">
+          <p class="text-xs font-medium text-slate-500">สถานะแบบทดสอบ</p>
+          <p class="text-xl font-bold mt-2" id="kpiStatusText">เปิดรับคำตอบ</p>
+          <p class="text-xs text-slate-400 mt-1" id="kpiModeText">เชื่อมต่อ Google Sheets</p>
+        </div>
+      </div>
+
+      <!-- Charts -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <div class="glass-card rounded-2xl p-5 shadow-sm">
+          <h3 class="font-semibold text-slate-800 text-sm mb-3">คะแนนเฉลี่ยแยกตามห้องเรียน</h3>
+          <div class="h-56"><canvas id="chartRooms"></canvas></div>
+        </div>
+        <div class="glass-card rounded-2xl p-5 shadow-sm">
+          <h3 class="font-semibold text-slate-800 text-sm mb-3">เปอร์เซ็นต์ตอบถูกตามระดับความยาก</h3>
+          <div class="h-56"><canvas id="chartDifficulty"></canvas></div>
+        </div>
+      </div>
+
+      <!-- Admin Tabs -->
+      <div class="flex gap-2 border-b border-slate-200 pb-2 overflow-x-auto">
+        <button onclick="switchAdminTab('students')" id="tabBtnStudents" class="px-4 py-2 rounded-xl text-sm font-semibold bg-indigo-600 text-white transition whitespace-nowrap">
+          รายชื่อและคะแนน
+        </button>
+        <button onclick="switchAdminTab('analysis')" id="tabBtnAnalysis" class="px-4 py-2 rounded-xl text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 transition whitespace-nowrap">
+          วิเคราะห์ข้อสอบรายข้อ (15 ข้อ)
+        </button>
+        <button onclick="switchAdminTab('settings')" id="tabBtnSettings" class="px-4 py-2 rounded-xl text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 transition whitespace-nowrap">
+          ตั้งค่าระบบ & ล้างข้อมูล
+        </button>
+      </div>
+
+      <!-- TAB 1: Student Table -->
+      <div id="adminTabStudents" class="glass-card rounded-2xl p-5 shadow-sm space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-2">
+            <select id="filterRoom" onchange="renderAdminTable()" class="px-3.5 py-2 rounded-xl border border-slate-200 text-sm bg-white outline-none focus:border-indigo-500">
+              <option value="ALL">ทุกห้องเรียน</option>
+              <option value="ม.6/1">ม.6/1</option>
+              <option value="ม.6/2">ม.6/2</option>
+              <option value="ม.6/3">ม.6/3</option>
+            </select>
+            <select id="sortBy" onchange="renderAdminTable()" class="px-3.5 py-2 rounded-xl border border-slate-200 text-sm bg-white outline-none focus:border-indigo-500">
+              <option value="newest">เรียงตามเวลาส่งล่าสุด</option>
+              <option value="number">เรียงตามห้องและเลขที่</option>
+              <option value="scoreDesc">คะแนนมาก -> น้อย</option>
+              <option value="scoreAsc">คะแนนน้อย -> มาก</option>
+            </select>
+          </div>
+          <input id="searchStudent" oninput="renderAdminTable()" type="text" placeholder="ค้นหาชื่อ, นามสกุล, เลขที่..."
+            class="w-full sm:w-64 px-4 py-2 rounded-xl border border-slate-200 text-sm outline-none focus:border-indigo-500 bg-white" />
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-left">
+            <thead>
+              <tr class="border-b border-slate-200 text-slate-500 text-xs uppercase">
+                <th class="py-3 px-3">ห้อง</th>
+                <th class="py-3 px-3">เลขที่</th>
+                <th class="py-3 px-3">ชื่อ - นามสกุล</th>
+                <th class="py-3 px-3 text-center">คะแนน</th>
+                <th class="py-3 px-3 text-center hidden sm:table-cell">ง่าย/กลาง/ยาก</th>
+                <th class="py-3 px-3 hidden md:table-cell">เวลาส่ง</th>
+                <th class="py-3 px-3 text-right">จัดการ</th>
+              </tr>
+            </thead>
+            <tbody id="adminTableBody" class="divide-y divide-slate-100"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 2: Item Analysis -->
+      <div id="adminTabAnalysis" class="hidden glass-card rounded-2xl p-5 shadow-sm space-y-4">
+        <p class="text-sm text-slate-500">แสดงอัตราการตอบถูกของนักเรียนในแต่ละข้อ เพื่อใช้ประเมินจุดอ่อนก่อนเริ่มสอน</p>
+        <div id="itemAnalysisContainer" class="space-y-3"></div>
+      </div>
+
+      <!-- TAB 3: Settings -->
+      <div id="adminTabSettings" class="hidden grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="glass-card rounded-2xl p-6 shadow-sm space-y-5">
+          <h3 class="font-bold text-slate-800">ควบคุมการทำงานของแบบทดสอบ</h3>
+
+          <label class="flex items-center justify-between gap-4 cursor-pointer">
+            <div>
+              <p class="font-medium text-sm text-slate-800">เปิดรับการทำแบบทดสอบ</p>
+              <p class="text-xs text-slate-500">หากปิด นักเรียนจะไม่สามารถกดเริ่มทำข้อสอบได้</p>
+            </div>
+            <input id="setIsOpen" type="checkbox" class="w-5 h-5 accent-indigo-600 rounded" />
+          </label>
+
+          <label class="flex items-center justify-between gap-4 cursor-pointer">
+            <div>
+              <p class="font-medium text-sm text-slate-800">แสดงเฉลยและคำอธิบายหลังส่ง</p>
+              <p class="text-xs text-slate-500">หากปิด นักเรียนจะเห็นเฉพาะคะแนนรวมเท่านั้น</p>
+            </div>
+            <input id="setShowReview" type="checkbox" class="w-5 h-5 accent-indigo-600 rounded" />
+          </label>
+
+          <label class="flex items-center justify-between gap-4 cursor-pointer">
+            <div>
+              <p class="font-medium text-sm text-slate-800">อนุญาตให้ทำข้อสอบซ้ำ</p>
+              <p class="text-xs text-slate-500">ตรวจสอบจาก ชั้น และ เลขที่ เดียวกัน</p>
+            </div>
+            <input id="setAllowRetake" type="checkbox" class="w-5 h-5 accent-indigo-600 rounded" />
+          </label>
+
+          <button onclick="saveAdminSettings()" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold transition">
+            บันทึกการตั้งค่า
+          </button>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 shadow-sm border-rose-200/80 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-rose-600">พื้นที่จัดการข้อมูลขั้นสูง (Danger Zone)</h3>
+            <p class="text-xs text-slate-500 mt-1">
+              ใช้สำหรับล้างข้อมูลทดสอบก่อนใช้งานจริงกับนักเรียนทั้งหมด การลบจะไม่สามารถกู้คืนได้
+            </p>
+          </div>
+          <button onclick="deleteAllRecords()" class="mt-6 w-full py-2.5 rounded-xl bg-rose-50 hover:bg-rose-600 text-rose-600 hover:text-white border border-rose-200 text-sm font-semibold transition">
+            ล้างข้อมูลผู้เข้าสอบทั้งหมด
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== MODALS ==================== -->
+  <!-- Admin PIN Modal -->
+  <div id="modalAdminPin" class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl animate-fade">
+      <div class="text-center mb-5">
+        <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900">เข้าสู่ระบบ Admin</h3>
+        <p class="text-xs text-slate-500 mt-1">กรุณากรอกรหัสผ่าน 4 หลัก</p>
+      </div>
+      <form onsubmit="verifyAdminPin(event)" class="space-y-4">
+        <input id="inputAdminPin" type="password" inputmode="numeric" maxlength="10" required placeholder="••••"
+          class="w-full text-center tracking-[0.5em] text-2xl font-bold px-4 py-3 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none" />
+        <p id="pinError" class="hidden text-xs text-rose-600 text-center font-medium">รหัสผ่านไม่ถูกต้อง</p>
+        <div class="grid grid-cols-2 gap-2.5">
+          <button type="button" onclick="closeAdminModal()" class="py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium">ยกเลิก</button>
+          <button type="submit" class="py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold">ยืนยัน</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Edit Student Modal -->
+  <div id="modalEdit" class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl animate-fade">
+      <h3 class="text-lg font-bold text-slate-900 mb-4">แก้ไขข้อมูลผู้เข้าสอบ</h3>
+      <form onsubmit="submitEditRecord(event)" class="space-y-4">
+        <input type="hidden" id="editId" />
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-medium text-slate-600 mb-1">ชื่อ</label>
+            <input id="editFirstName" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-600 mb-1">นามสกุล</label>
+            <input id="editLastName" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="block text-xs font-medium text-slate-600 mb-1">ชั้น</label>
+            <select id="editClassroom" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm bg-white">
+              <option value="ม.6/1">ม.6/1</option>
+              <option value="ม.6/2">ม.6/2</option>
+              <option value="ม.6/3">ม.6/3</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-600 mb-1">เลขที่</label>
+            <input id="editNumber" type="number" min="1" max="60" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-600 mb-1">คะแนน (0-15)</label>
+            <input id="editScore" type="number" min="0" max="15" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+          </div>
+        </div>
+        <div class="flex justify-end gap-2 pt-2">
+          <button type="button" onclick="closeEditModal()" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-sm font-medium">ยกเลิก</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-indigo-600 text-white text-sm font-semibold">บันทึก</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Detail Answers Modal -->
+  <div id="modalDetail" class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl animate-fade overflow-hidden">
+      <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between">
+        <div>
+          <h3 class="font-bold text-slate-900" id="detailTitle">รายละเอียดคำตอบ</h3>
+          <p class="text-xs text-slate-500" id="detailSub"></p>
+        </div>
+        <button onclick="document.getElementById('modalDetail').classList.add('hidden')" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600">✕</button>
+      </div>
+      <div id="detailBody" class="p-6 overflow-y-auto space-y-3 text-sm"></div>
+    </div>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center">
+    <div class="bg-white rounded-2xl px-6 py-5 shadow-xl flex items-center gap-3">
+      <div class="w-6 h-6 border-3 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+      <span id="loadingText" class="text-sm font-medium text-slate-700">กำลังดำเนินการ...</span>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // 1. ตั้งค่า URL ของ Google Apps Script Web App ที่ได้จากการ Deploy code.gs
+    //    (วาง URL ระหว่างเครื่องหมายคำพูด เช่น "https://script.google.com/macros/s/.../exec")
+    // =========================================================================
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxmDNmnxr718K3mg0oovrS-jQZIRQKAE0LyE87Lpzz1rgSdCPI8lx7yZ0rhKUZaPL0o/exec";
+    const LOCAL_ADMIN_PIN = "7846";
+
+    const isDemoMode = !SCRIPT_URL || SCRIPT_URL.includes("YOUR_GOOGLE_APPS_SCRIPT");
+
+    // =========================================================================
+    // 2. ข้อสอบ Pre-test 15 ข้อ (Present Perfect Simple Tense - ง่าย กลาง ยาก คละกัน)
+    // =========================================================================
+    const QUESTIONS = [
+      {
+        id: 1, level: "easy",
+        q: "She ________ to Japan three times.",
+        options: ["go", "has been", "went", "have been"],
+        answer: 1,
+        explain: "ใช้ has been to กับประธานเอกพจน์ (She) เพื่อบอกประสบการณ์ที่เคยไปมาแล้วและกลับมาแล้ว"
+      },
+      {
+        id: 2, level: "easy",
+        q: "We ________ our homework yet.",
+        options: ["didn't finish", "haven't finished", "hasn't finished", "don't finish"],
+        answer: 1,
+        explain: "มีคำว่า yet ในประโยคปฏิเสธ และประธานเป็นพหูพจน์ (We) จึงใช้ haven't + V.3"
+      },
+      {
+        id: 3, level: "medium",
+        q: "My brother has lived in Chiang Mai ________ 2019.",
+        options: ["for", "since", "ago", "during"],
+        answer: 1,
+        explain: "2019 เป็นจุดเริ่มต้นของเวลา จึงใช้ since (ส่วน for ใช้กับช่วงระยะเวลา)"
+      },
+      {
+        id: 4, level: "easy",
+        q: "________ you ever eaten durian?",
+        options: ["Did", "Has", "Have", "Are"],
+        answer: 2,
+        explain: "ประโยคคำถามถามประสบการณ์ด้วย ever ใช้ Have + you + ever + V.3"
+      },
+      {
+        id: 5, level: "medium",
+        q: "Look! Someone ________ the classroom window. There is glass everywhere.",
+        options: ["breaks", "has broken", "was breaking", "had broken"],
+        answer: 1,
+        explain: "เหตุการณ์ที่เพิ่งเกิดขึ้นและส่งผลชัดเจนในปัจจุบัน (มีเศษกระจกอยู่เต็มพื้น) ใช้ Present Perfect"
+      },
+      {
+        id: 6, level: "hard",
+        q: "This is the most inspiring documentary I ________.",
+        options: ["ever watch", "ever watched", "have ever watched", "am ever watching"],
+        answer: 2,
+        explain: "โครงสร้างขั้นสุด (This is the + superlative ...) ตามด้วย Present Perfect Simple"
+      },
+      {
+        id: 7, level: "easy",
+        q: "Tom has ________ finished his lunch, so he isn't hungry now.",
+        options: ["yet", "just", "since", "ever"],
+        answer: 1,
+        explain: "just วางระหว่าง has/have กับ V.3 ในประโยคบอกเล่า แปลว่า เพิ่งจะ..."
+      },
+      {
+        id: 8, level: "medium",
+        q: "Where is Nida? — She ________ to the library. She will be back in an hour.",
+        options: ["has been", "has gone", "went", "goes"],
+        answer: 1,
+        explain: "has gone to แปลว่า ไปแล้วยังอยู่ที่นั่น ยังไม่กลับมา (ต่างจาก has been to ที่กลับมาแล้ว)"
+      },
+      {
+        id: 9, level: "hard",
+        q: "I haven't heard from my cousin ________ he moved to Australia.",
+        options: ["for", "when", "since", "until"],
+        answer: 2,
+        explain: "โครงสร้าง Present Perfect + since + Past Simple ใช้บอกจุดเริ่มต้นที่เป็นเหตุการณ์ในอดีต"
+      },
+      {
+        id: 10, level: "medium",
+        q: "They ________ each other for more than ten years.",
+        options: ["know", "are knowing", "have known", "have been knowing"],
+        answer: 2,
+        explain: "know เป็นกริยาบอกสภาพ (Stative Verb) ไม่นิยมใช้รูป Continuous จึงใช้ have known"
+      },
+      {
+        id: 11, level: "hard",
+        q: "How many research papers ________ so far this semester?",
+        options: ["did the students write", "have the students written", "do the students write", "were the students writing"],
+        answer: 1,
+        explain: "มีคำบอกเวลา so far this semester (จนถึงตอนนี้) และถามจำนวน จึงใช้ Present Perfect Simple"
+      },
+      {
+        id: 12, level: "easy",
+        q: "The teacher ________ already ________ the exam results on the board.",
+        options: ["has / posted", "have / posted", "has / post", "is / posting"],
+        answer: 0,
+        explain: "ประธานเอกพจน์ (The teacher) ใช้ has + already + V.3 (posted)"
+      },
+      {
+        id: 13, level: "hard",
+        q: "Neither of the applicants ________ the required qualification yet.",
+        options: ["have submitted", "has submitted", "submitted", "are submitting"],
+        answer: 1,
+        explain: "Neither of + คำนามพหูพจน์ ใช้กริยาเอกพจน์ในไวยากรณ์ทางการ ร่วมกับ yet จึงใช้ has submitted"
+      },
+      {
+        id: 14, level: "medium",
+        q: "It's the second time he ________ his student ID card this month.",
+        options: ["loses", "lost", "has lost", "is losing"],
+        answer: 2,
+        explain: "โครงสร้าง It's the first/second/third time + Subject + Present Perfect Simple"
+      },
+      {
+        id: 15, level: "hard",
+        q: "The number of electric cars in Thailand ________ significantly over the past five years.",
+        options: ["have increased", "has increased", "increased", "was increasing"],
+        answer: 1,
+        explain: "The number of + นามพหูพจน์ ถือเป็นประธานเอกพจน์ ใช้ has ร่วมกับ over the past five years"
+      }
+    ];
+
+    const LEVEL_LABEL = {
+      easy: { text: "ง่าย", cls: "bg-emerald-100 text-emerald-700" },
+      medium: { text: "กลาง", cls: "bg-amber-100 text-amber-700" },
+      hard: { text: "ยาก", cls: "bg-rose-100 text-rose-700" }
+    };
+
+    // =========================================================================
+    // 3. State Management
+    // =========================================================================
+    let appSettings = { isOpen: true, showReview: true, allowRetake: false };
+    let currentStudent = null;
+    let quizStartTime = null;
+    let timerInterval = null;
+    let adminPinSession = "";
+    let adminSubmissions = [];
+    let chartRoomsInstance = null;
+    let chartDiffInstance = null;
+
+    // =========================================================================
+    // 4. Local Demo Storage Helpers (ทำงานเฉพาะตอนยังไม่ได้ใส่ SCRIPT_URL)
+    // =========================================================================
+    function demoGetSettings() {
+      const saved = localStorage.getItem("pp_demo_settings");
+      return saved ? JSON.parse(saved) : { isOpen: true, showReview: true, allowRetake: false };
+    }
+    function demoSaveSettings(s) {
+      localStorage.setItem("pp_demo_settings", JSON.stringify(s));
+    }
+    function demoGetSubmissions() {
+      const saved = localStorage.getItem("pp_demo_subs");
+      return saved ? JSON.parse(saved) : [];
+    }
+    function demoSaveSubmissions(arr) {
+      localStorage.setItem("pp_demo_subs", JSON.stringify(arr));
+    }
+
+    // =========================================================================
+    // 5. API Communication
+    // =========================================================================
+    async function apiGet(params) {
+      if (isDemoMode) {
+        if (params.action === "getStatus") return { status: "success", settings: demoGetSettings() };
+        if (params.action === "getAllData") {
+          if (params.pin !== LOCAL_ADMIN_PIN) return { status: "error", message: "รหัสผ่านไม่ถูกต้อง" };
+          return { status: "success", settings: demoGetSettings(), submissions: demoGetSubmissions() };
+        }
+      }
+      const query = new URLSearchParams(params).toString();
+      const res = await fetch(`${SCRIPT_URL}?${query}`);
+      return await res.json();
+    }
+
+    async function apiPost(payload) {
+      if (isDemoMode) {
+        if (payload.action === "submitTest") {
+          const settings = demoGetSettings();
+          if (!settings.isOpen) return { status: "error", message: "ขณะนี้ปิดรับการทำแบบทดสอบแล้ว" };
+          const subs = demoGetSubmissions();
+          if (!settings.allowRetake && subs.some(s => s.classroom === payload.classroom && Number(s.studentNumber) === Number(payload.studentNumber))) {
+            return { status: "error", message: `ชั้น ${payload.classroom} เลขที่ ${payload.studentNumber} ได้ส่งแบบทดสอบไปแล้ว` };
+          }
+          const newRec = { ...payload, id: "DEMO-" + Date.now(), timestamp: new Date().toISOString() };
+          delete newRec.action;
+          subs.push(newRec);
+          demoSaveSubmissions(subs);
+          return { status: "success", id: newRec.id, settings };
+        }
+        if (payload.pin !== LOCAL_ADMIN_PIN) return { status: "error", message: "รหัสผ่าน Admin ไม่ถูกต้อง" };
+        if (payload.action === "adminLogin") {
+          return { status: "success", settings: demoGetSettings(), submissions: demoGetSubmissions() };
+        }
+        if (payload.action === "updateSettings") {
+          demoSaveSettings(payload.settings);
+          return { status: "success", settings: payload.settings };
+        }
+        if (payload.action === "editRecord") {
+          const subs = demoGetSubmissions().map(s => s.id === payload.id ? {
+            ...s, firstName: payload.firstName, lastName: payload.lastName,
+            classroom: payload.classroom, studentNumber: Number(payload.studentNumber), score: Number(payload.score)
+          } : s);
+          demoSaveSubmissions(subs);
+          return { status: "success" };
+        }
+        if (payload.action === "deleteRecord") {
+          demoSaveSubmissions(demoGetSubmissions().filter(s => s.id !== payload.id));
+          return { status: "success" };
+        }
+        if (payload.action === "deleteAllRecords") {
+          demoSaveSubmissions([]);
+          return { status: "success" };
+        }
+      }
+
+      // ใช้ text/plain เพื่อหลีกเลี่ยง CORS Preflight กับ Google Apps Script
+      const res = await fetch(SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+      return await res.json();
+    }
+
+    // =========================================================================
+    // 6. Initialization & Navigation
+    // =========================================================================
+    function showLoading(text = "กำลังโหลด...") {
+      document.getElementById("loadingText").textContent = text;
+      document.getElementById("loadingOverlay").classList.remove("hidden");
+    }
+    function hideLoading() {
+      document.getElementById("loadingOverlay").classList.add("hidden");
+    }
+
+    function showView(viewId) {
+      ["viewHome", "viewQuiz", "viewResult", "viewAdmin"].forEach(id => {
+        document.getElementById(id).classList.toggle("hidden", id !== viewId);
+      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function goHomeIfSafe() {
+      if (!document.getElementById("viewQuiz").classList.contains("hidden")) {
+        if (!confirm("คุณกำลังทำแบบทดสอบอยู่ ต้องการออกและล้างคำตอบหรือไม่?")) return;
+        clearInterval(timerInterval);
+      }
+      resetToHome();
+    }
+
+    async function initApp() {
+      if (isDemoMode) {
+        document.getElementById("demoBadge").classList.remove("hidden");
+      }
+      try {
+        const res = await apiGet({ action: "getStatus" });
+        if (res.status === "success") {
+          appSettings = res.settings;
+          applyOpenState();
+        }
+      } catch (e) {
+        console.warn("Unable to fetch initial status:", e);
+      }
+    }
+
+    function applyOpenState() {
+      const closedAlert = document.getElementById("closedAlert");
+      const btnStart = document.getElementById("btnStartQuiz");
+      if (!appSettings.isOpen) {
+        closedAlert.classList.remove("hidden");
+        btnStart.disabled = true;
+        btnStart.classList.add("opacity-50", "cursor-not-allowed");
+      } else {
+        closedAlert.classList.add("hidden");
+        btnStart.disabled = false;
+        btnStart.classList.remove("opacity-50", "cursor-not-allowed");
+      }
+    }
+
+    // =========================================================================
+    // 7. Quiz Logic
+    // =========================================================================
+    function startQuiz(e) {
+      e.preventDefault();
+      if (!appSettings.isOpen) {
+        alert("ขณะนี้ระบบปิดรับการทำแบบทดสอบแล้ว");
+        return;
+      }
+
+      currentStudent = {
+        firstName: document.getElementById("inputFirstName").value.trim(),
+        lastName: document.getElementById("inputLastName").value.trim(),
+        classroom: document.getElementById("inputClassroom").value,
+        studentNumber: Number(document.getElementById("inputNumber").value)
+      };
+
+      document.getElementById("quizStudentRoom").textContent = currentStudent.classroom;
+      document.getElementById("quizStudentName").textContent = `${currentStudent.firstName} ${currentStudent.lastName}`;
+      document.getElementById("quizStudentNo").textContent = `เลขที่ ${currentStudent.studentNumber}`;
+
+      renderQuestions();
+      updateProgress();
+      showView("viewQuiz");
+
+      quizStartTime = Date.now();
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        const sec = Math.floor((Date.now() - quizStartTime) / 1000);
+        document.getElementById("quizTimer").textContent = formatTime(sec);
+      }, 1000);
+    }
+
+    function renderQuestions() {
+      const letters = ["A", "B", "C", "D"];
+      const html = QUESTIONS.map((item, idx) => `
+        <div id="qCard_${item.id}" class="glass-card rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-200/90 transition">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white font-bold text-sm flex items-center justify-center shrink-0 font-en">
+              ${idx + 1}
+            </span>
+            <p class="text-slate-900 font-semibold text-base sm:text-lg font-en leading-relaxed pt-0.5">
+              ${item.q}
+            </p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pl-0 sm:pl-11">
+            ${item.options.map((opt, optIdx) => `
+              <label class="cursor-pointer block">
+                <input type="radio" name="q_${item.id}" value="${optIdx}" onchange="updateProgress()" class="hidden option-radio" />
+                <div class="option-card flex items-center gap-3 p-3.5 rounded-xl border border-slate-200 bg-white">
+                  <span class="option-badge w-7 h-7 rounded-lg border border-slate-300 text-slate-600 font-bold text-xs flex items-center justify-center shrink-0 font-en">
+                    ${letters[optIdx]}
+                  </span>
+                  <span class="text-slate-800 font-en font-medium text-sm sm:text-base">${opt}</span>
+                </div>
+              </label>
+            `).join("")}
+          </div>
+        </div>
+      `).join("");
+      document.getElementById("questionsContainer").innerHTML = html;
+    }
+
+    function updateProgress() {
+      let answered = 0;
+      QUESTIONS.forEach(q => {
+        if (document.querySelector(`input[name="q_${q.id}"]:checked`)) answered++;
+      });
+      document.getElementById("answeredCount").textContent = answered;
+      document.getElementById("quizProgressBar").style.width = `${(answered / QUESTIONS.length) * 100}%`;
+    }
+
+    async function submitQuiz() {
+      const userAnswers = [];
+      for (const q of QUESTIONS) {
+        const checked = document.querySelector(`input[name="q_${q.id}"]:checked`);
+        if (!checked) {
+          const card = document.getElementById(`qCard_${q.id}`);
+          card.scrollIntoView({ behavior: "smooth", block: "center" });
+          card.classList.add("ring-2", "ring-rose-400");
+          setTimeout(() => card.classList.remove("ring-2", "ring-rose-400"), 2000);
+          alert(`กรุณาตอบคำถามข้อที่ ${q.id} ให้ครบก่อนส่งครับ`);
+          return;
+        }
+        userAnswers.push(Number(checked.value));
+      }
+
+      clearInterval(timerInterval);
+      const timeSpentSec = Math.max(1, Math.floor((Date.now() - quizStartTime) / 1000));
+
+      let score = 0, easyScore = 0, mediumScore = 0, hardScore = 0;
+      QUESTIONS.forEach((q, idx) => {
+        if (userAnswers[idx] === q.answer) {
+          score++;
+          if (q.level === "easy") easyScore++;
+          if (q.level === "medium") mediumScore++;
+          if (q.level === "hard") hardScore++;
+        }
+      });
+
+      const payload = {
+        action: "submitTest",
+        ...currentStudent,
+        score,
+        total: QUESTIONS.length,
+        easyScore,
+        mediumScore,
+        hardScore,
+        timeSpentSec,
+        answers: userAnswers
+      };
+
+      showLoading("กำลังบันทึกคำตอบ...");
+      try {
+        const res = await apiPost(payload);
+        hideLoading();
+        if (res.status !== "success") {
+          alert(res.message || "เกิดข้อผิดพลาดในการส่งคำตอบ");
+          return;
+        }
+        if (res.settings) appSettings = res.settings;
+        renderResult(payload);
+        showView("viewResult");
+      } catch (err) {
+        hideLoading();
+        alert("ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้ กรุณาลองใหม่อีกครั้ง");
+      }
+    }
+
+    function renderResult(data) {
+      document.getElementById("resStudentInfo").textContent =
+        `${data.firstName} ${data.lastName} (${data.classroom} เลขที่ ${data.studentNumber})`;
+      document.getElementById("resScore").textContent = data.score;
+      const pct = Math.round((data.score / data.total) * 100);
+      document.getElementById("resMeta").textContent = `ใช้เวลา ${formatTime(data.timeSpentSec)} • คิดเป็น ${pct}%`;
+      document.getElementById("resEasy").textContent = data.easyScore;
+      document.getElementById("resMedium").textContent = data.mediumScore;
+      document.getElementById("resHard").textContent = data.hardScore;
+
+      const reviewEl = document.getElementById("reviewSection");
+      if (!appSettings.showReview) {
+        reviewEl.innerHTML = `<div class="glass-card rounded-2xl p-6 text-center text-sm text-slate-500">ครูผู้สอนตั้งค่าซ่อนเฉลยหลังทำแบบทดสอบไว้</div>`;
+        return;
+      }
+
+      const letters = ["A", "B", "C", "D"];
+      reviewEl.innerHTML = `
+        <h3 class="text-lg font-bold text-slate-800 px-1">เฉลยและคำอธิบายรายข้อ</h3>
+        ${QUESTIONS.map((q, i) => {
+          const userAns = data.answers[i];
+          const isCorrect = userAns === q.answer;
+          const lvl = LEVEL_LABEL[q.level];
+          return `
+            <div class="glass-card rounded-2xl p-5 border-l-4 ${isCorrect ? 'border-l-emerald-500' : 'border-l-rose-500'}">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <span class="text-xs font-bold ${isCorrect ? 'text-emerald-600' : 'text-rose-600'}">
+                  ข้อที่ ${q.id} • ${isCorrect ? 'ตอบถูกต้อง ✓' : 'ตอบผิด ✕'}
+                </span>
+                <span class="text-xs font-medium px-2 py-0.5 rounded-full ${lvl.cls}">ระดับ${lvl.text}</span>
+              </div>
+              <p class="font-en font-semibold text-slate-900 mb-2">${q.q}</p>
+              <div class="text-sm space-y-1">
+                <p class="${isCorrect ? 'text-emerald-700' : 'text-rose-600'}">
+                  คำตอบของคุณ: <strong class="font-en">${letters[userAns]}. ${q.options[userAns]}</strong>
+                </p>
+                ${!isCorrect ? `<p class="text-emerald-700">คำตอบที่ถูกต้อง: <strong class="font-en">${letters[q.answer]}. ${q.options[q.answer]}</strong></p>` : ""}
+                <p class="text-xs text-slate-600 bg-slate-50 rounded-xl p-2.5 mt-2 border border-slate-100">
+                  💡 ${q.explain}
+                </p>
+              </div>
+            </div>
+          `;
+        }).join("")}
+      `;
+    }
+
+    function resetToHome() {
+      document.getElementById("studentForm").reset();
+      showView("viewHome");
+      initApp();
+    }
+
+    // =========================================================================
+    // 8. Admin Panel Logic (PIN: 7846)
+    // =========================================================================
+    function openAdminModal() {
+      if (adminPinSession) {
+        showView("viewAdmin");
+        loadAdminData();
+        return;
+      }
+      document.getElementById("inputAdminPin").value = "";
+      document.getElementById("pinError").classList.add("hidden");
+      document.getElementById("modalAdminPin").classList.remove("hidden");
+      setTimeout(() => document.getElementById("inputAdminPin").focus(), 100);
+    }
+
+    function closeAdminModal() {
+      document.getElementById("modalAdminPin").classList.add("hidden");
+    }
+
+    async function verifyAdminPin(e) {
+      e.preventDefault();
+      const pin = document.getElementById("inputAdminPin").value.trim();
+      showLoading("กำลังตรวจสอบสิทธิ์...");
+      try {
+        const res = await apiPost({ action: "adminLogin", pin });
+        hideLoading();
+        if (res.status === "success") {
+          adminPinSession = pin;
+          appSettings = res.settings;
+          adminSubmissions = res.submissions || [];
+          closeAdminModal();
+          showView("viewAdmin");
+          renderAdminDashboard();
+        } else {
+          document.getElementById("pinError").classList.remove("hidden");
+        }
+      } catch (err) {
+        hideLoading();
+        alert("ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้");
+      }
+    }
+
+    async function loadAdminData() {
+      showLoading("กำลังอัปเดตข้อมูล...");
+      try {
+        const res = await apiGet({ action: "getAllData", pin: adminPinSession });
+        hideLoading();
+        if (res.status === "success") {
+          appSettings = res.settings;
+          adminSubmissions = res.submissions || [];
+          renderAdminDashboard();
+        }
+      } catch (err) {
+        hideLoading();
+        alert("โหลดข้อมูลไม่สำเร็จ");
+      }
+    }
+
+    function exitAdmin() {
+      adminPinSession = "";
+      resetToHome();
+    }
+
+    function switchAdminTab(tab) {
+      const map = {
+        students: { btn: "tabBtnStudents", panel: "adminTabStudents" },
+        analysis: { btn: "tabBtnAnalysis", panel: "adminTabAnalysis" },
+        settings: { btn: "tabBtnSettings", panel: "adminTabSettings" }
+      };
+      Object.keys(map).forEach(k => {
+        const active = k === tab;
+        document.getElementById(map[k].panel).classList.toggle("hidden", !active);
+        const btn = document.getElementById(map[k].btn);
+        btn.className = active
+          ? "px-4 py-2 rounded-xl text-sm font-semibold bg-indigo-600 text-white transition whitespace-nowrap"
+          : "px-4 py-2 rounded-xl text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 transition whitespace-nowrap";
+      });
+    }
+
+    function renderAdminDashboard() {
+      const subs = adminSubmissions;
+      const total = subs.length;
+
+      const c1 = subs.filter(s => s.classroom === "ม.6/1");
+      const c2 = subs.filter(s => s.classroom === "ม.6/2");
+      const c3 = subs.filter(s => s.classroom === "ม.6/3");
+
+      const avg = total ? (subs.reduce((a, b) => a + b.score, 0) / total) : 0;
+      const max = total ? Math.max(...subs.map(s => s.score)) : 0;
+      const min = total ? Math.min(...subs.map(s => s.score)) : 0;
+
+      document.getElementById("kpiTotal").textContent = total;
+      document.getElementById("kpiRooms").textContent = `6/1: ${c1.length} • 6/2: ${c2.length} • 6/3: ${c3.length}`;
+      document.getElementById("kpiAvg").textContent = avg.toFixed(1);
+      document.getElementById("kpiAvgPct").textContent = `คิดเป็น ${Math.round((avg / 15) * 100)}%`;
+      document.getElementById("kpiMax").textContent = max;
+      document.getElementById("kpiMin").textContent = min;
+
+      const statusEl = document.getElementById("kpiStatusText");
+      statusEl.textContent = appSettings.isOpen ? "● เปิดรับคำตอบ" : "● ปิดรับคำตอบ";
+      statusEl.className = `text-xl font-bold mt-2 ${appSettings.isOpen ? "text-emerald-600" : "text-rose-600"}`;
+      document.getElementById("kpiModeText").textContent = isDemoMode ? "โหมดทดสอบ (LocalStorage)" : "เชื่อมต่อ Google Sheets";
+
+      // Settings checkboxes
+      document.getElementById("setIsOpen").checked = appSettings.isOpen;
+      document.getElementById("setShowReview").checked = appSettings.showReview;
+      document.getElementById("setAllowRetake").checked = appSettings.allowRetake;
+
+      renderCharts(c1, c2, c3, subs);
+      renderAdminTable();
+      renderItemAnalysis(subs);
+    }
+
+    function renderCharts(c1, c2, c3, subs) {
+      const avgOf = arr => arr.length ? Number((arr.reduce((a, b) => a + b.score, 0) / arr.length).toFixed(2)) : 0;
+
+      if (chartRoomsInstance) chartRoomsInstance.destroy();
+      chartRoomsInstance = new Chart(document.getElementById("chartRooms"), {
+        type: "bar",
+        data: {
+          labels: ["ม.6/1", "ม.6/2", "ม.6/3"],
+          datasets: [{
+            label: "คะแนนเฉลี่ย (เต็ม 15)",
+            data: [avgOf(c1), avgOf(c2), avgOf(c3)],
+            backgroundColor: ["#6366f1", "#8b5cf6", "#06b6d4"],
+            borderRadius: 10,
+            maxBarThickness: 48
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          scales: { y: { beginAtZero: true, max: 15 } },
+          plugins: { legend: { display: false } }
+        }
+      });
+
+      const pctLevel = key => {
+        if (!subs.length) return 0;
+        const sum = subs.reduce((a, b) => a + (Number(b[key]) || 0), 0);
+        return Math.round((sum / (subs.length * 5)) * 100);
+      };
+
+      if (chartDiffInstance) chartDiffInstance.destroy();
+      chartDiffInstance = new Chart(document.getElementById("chartDifficulty"), {
+        type: "bar",
+        data: {
+          labels: ["ระดับง่าย (5 ข้อ)", "ระดับกลาง (5 ข้อ)", "ระดับยาก (5 ข้อ)"],
+          datasets: [{
+            label: "% ตอบถูกเฉลี่ย",
+            data: [pctLevel("easyScore"), pctLevel("mediumScore"), pctLevel("hardScore")],
+            backgroundColor: ["#10b981", "#f59e0b", "#f43f5e"],
+            borderRadius: 10,
+            maxBarThickness: 48
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          scales: { y: { beginAtZero: true, max: 100, ticks: { callback: v => v + "%" } } },
+          plugins: { legend: { display: false } }
+        }
+      });
+    }
+
+    function renderAdminTable() {
+      const room = document.getElementById("filterRoom").value;
+      const sort = document.getElementById("sortBy").value;
+      const kw = document.getElementById("searchStudent").value.trim().toLowerCase();
+
+      let list = adminSubmissions.filter(s => {
+        if (room !== "ALL" && s.classroom !== room) return false;
+        if (kw) {
+          const hay = `${s.firstName} ${s.lastName} ${s.classroom} ${s.studentNumber}`.toLowerCase();
+          if (!hay.includes(kw)) return false;
+        }
+        return true;
+      });
+
+      if (sort === "newest") list.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      if (sort === "number") list.sort((a, b) => a.classroom.localeCompare(b.classroom) || a.studentNumber - b.studentNumber);
+      if (sort === "scoreDesc") list.sort((a, b) => b.score - a.score);
+      if (sort === "scoreAsc") list.sort((a, b) => a.score - b.score);
+
+      const tbody = document.getElementById("adminTableBody");
+      if (!list.length) {
+        tbody.innerHTML = `<tr><td colspan="7" class="py-10 text-center text-slate-400">ยังไม่มีข้อมูลผู้เข้าสอบ</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = list.map(s => {
+        const badgeColor = s.score >= 12 ? "bg-emerald-100 text-emerald-700"
+          : s.score >= 8 ? "bg-amber-100 text-amber-700"
+          : "bg-rose-100 text-rose-700";
+        return `
+          <tr class="hover:bg-slate-50/80 transition">
+            <td class="py-3 px-3 font-medium text-indigo-700">${escapeHtml(s.classroom)}</td>
+            <td class="py-3 px-3 font-en">${s.studentNumber}</td>
+            <td class="py-3 px-3 font-medium text-slate-800">${escapeHtml(s.firstName)} ${escapeHtml(s.lastName)}</td>
+            <td class="py-3 px-3 text-center">
+              <span class="inline-block px-2.5 py-0.5 rounded-full font-bold font-en text-xs ${badgeColor}">${s.score}/15</span>
+            </td>
+            <td class="py-3 px-3 text-center text-xs text-slate-500 hidden sm:table-cell font-en">
+              ${s.easyScore} / ${s.mediumScore} / ${s.hardScore}
+            </td>
+            <td class="py-3 px-3 text-xs text-slate-400 hidden md:table-cell">${formatDate(s.timestamp)}</td>
+            <td class="py-3 px-3 text-right whitespace-nowrap space-x-1">
+              <button onclick="viewDetail('${s.id}')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700 hover:text-indigo-700 text-xs font-medium">ดู</button>
+              <button onclick="openEditModal('${s.id}')" class="px-2.5 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-700 text-xs font-medium">แก้</button>
+              <button onclick="deleteRecord('${s.id}')" class="px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-600 text-xs font-medium">ลบ</button>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function renderItemAnalysis(subs) {
+      const total = subs.length;
+      const letters = ["A", "B", "C", "D"];
+      const html = QUESTIONS.map((q, idx) => {
+        let correctCount = 0;
+        subs.forEach(s => {
+          if (Array.isArray(s.answers) && Number(s.answers[idx]) === q.answer) correctCount++;
+        });
+        const pct = total ? Math.round((correctCount / total) * 100) : 0;
+        const lvl = LEVEL_LABEL[q.level];
+        const barColor = pct >= 70 ? "bg-emerald-500" : pct >= 40 ? "bg-amber-500" : "bg-rose-500";
+        return `
+          <div class="p-4 rounded-xl border border-slate-200 bg-white/80">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-indigo-600 text-sm">ข้อ ${q.id}</span>
+                <span class="text-xs px-2 py-0.5 rounded-full font-medium ${lvl.cls}">ระดับ${lvl.text}</span>
+              </div>
+              <span class="text-xs font-semibold text-slate-700">ตอบถูก ${correctCount}/${total} คน (${pct}%)</span>
+            </div>
+            <p class="text-sm font-en font-medium text-slate-800 mb-2">${q.q} <span class="text-emerald-600 font-semibold">[เฉลย: ${letters[q.answer]}. ${q.options[q.answer]}]</span></p>
+            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full ${barColor} transition-all" style="width: ${pct}%"></div>
+            </div>
+          </div>
+        `;
+      }).join("");
+      document.getElementById("itemAnalysisContainer").innerHTML = html;
+    }
+
+    function viewDetail(id) {
+      const s = adminSubmissions.find(x => x.id === id);
+      if (!s) return;
+      const letters = ["A", "B", "C", "D"];
+      document.getElementById("detailTitle").textContent = `${s.firstName} ${s.lastName} (${s.classroom} เลขที่ ${s.studentNumber})`;
+      document.getElementById("detailSub").textContent = `คะแนน ${s.score}/15 • ใช้เวลา ${formatTime(s.timeSpentSec)} • ส่งเมื่อ ${formatDate(s.timestamp)}`;
+      document.getElementById("detailBody").innerHTML = QUESTIONS.map((q, i) => {
+        const ans = Array.isArray(s.answers) ? s.answers[i] : null;
+        const ok = ans === q.answer;
+        return `
+          <div class="p-3 rounded-xl border ${ok ? 'border-emerald-200 bg-emerald-50/40' : 'border-rose-200 bg-rose-50/40'}">
+            <p class="font-en font-semibold text-slate-800">${q.id}. ${q.q}</p>
+            <p class="text-xs mt-1">
+              ตอบ: <strong class="${ok ? 'text-emerald-700' : 'text-rose-600'}">${ans !== null ? letters[ans] + '. ' + q.options[ans] : '-'}</strong>
+              ${!ok ? ` | เฉลย: <strong class="text-emerald-700">${letters[q.answer]}. ${q.options[q.answer]}</strong>` : ''}
+            </p>
+          </div>
+        `;
+      }).join("");
+      document.getElementById("modalDetail").classList.remove("hidden");
+    }
+
+    function openEditModal(id) {
+      const s = adminSubmissions.find(x => x.id === id);
+      if (!s) return;
+      document.getElementById("editId").value = s.id;
+      document.getElementById("editFirstName").value = s.firstName;
+      document.getElementById("editLastName").value = s.lastName;
+      document.getElementById("editClassroom").value = s.classroom;
+      document.getElementById("editNumber").value = s.studentNumber;
+      document.getElementById("editScore").value = s.score;
+      document.getElementById("modalEdit").classList.remove("hidden");
+    }
+
+    function closeEditModal() {
+      document.getElementById("modalEdit").classList.add("hidden");
+    }
+
+    async function submitEditRecord(e) {
+      e.preventDefault();
+      showLoading("กำลังบันทึกการแก้ไข...");
+      try {
+        const res = await apiPost({
+          action: "editRecord",
+          pin: adminPinSession,
+          id: document.getElementById("editId").value,
+          firstName: document.getElementById("editFirstName").value.trim(),
+          lastName: document.getElementById("editLastName").value.trim(),
+          classroom: document.getElementById("editClassroom").value,
+          studentNumber: Number(document.getElementById("editNumber").value),
+          score: Number(document.getElementById("editScore").value)
+        });
+        hideLoading();
+        if (res.status === "success") {
+          closeEditModal();
+          await loadAdminData();
+        } else {
+          alert(res.message || "แก้ไขไม่สำเร็จ");
+        }
+      } catch (err) {
+        hideLoading();
+        alert("เกิดข้อผิดพลาดในการเชื่อมต่อ");
+      }
+    }
+
+    async function deleteRecord(id) {
+      if (!confirm("ยืนยันการลบข้อมูลนักเรียนคนนี้หรือไม่?")) return;
+      showLoading("กำลังลบข้อมูล...");
+      try {
+        const res = await apiPost({ action: "deleteRecord", pin: adminPinSession, id });
+        hideLoading();
+        if (res.status === "success") await loadAdminData();
+      } catch (err) {
+        hideLoading();
+        alert("ลบข้อมูลไม่สำเร็จ");
+      }
+    }
+
+    async function saveAdminSettings() {
+      const newSettings = {
+        isOpen: document.getElementById("setIsOpen").checked,
+        showReview: document.getElementById("setShowReview").checked,
+        allowRetake: document.getElementById("setAllowRetake").checked
+      };
+      showLoading("กำลังบันทึกการตั้งค่า...");
+      try {
+        const res = await apiPost({ action: "updateSettings", pin: adminPinSession, settings: newSettings });
+        hideLoading();
+        if (res.status === "success") {
+          appSettings = res.settings;
+          renderAdminDashboard();
+          alert("บันทึกการตั้งค่าเรียบร้อยแล้ว");
+        }
+      } catch (err) {
+        hideLoading();
+        alert("บันทึกไม่สำเร็จ");
+      }
+    }
+
+    async function deleteAllRecords() {
+      if (!confirm("คำเตือน: ต้องการล้างข้อมูลคะแนนนักเรียนทั้งหมดใช่หรือไม่?")) return;
+      const confirmText = prompt("พิมพ์คำว่า DELETE เพื่อยืนยันการล้างข้อมูลทั้งหมด:");
+      if (confirmText !== "DELETE") return;
+      showLoading("กำลังล้างข้อมูลทั้งหมด...");
+      try {
+        const res = await apiPost({ action: "deleteAllRecords", pin: adminPinSession });
+        hideLoading();
+        if (res.status === "success") {
+          await loadAdminData();
+          alert("ล้างข้อมูลทั้งหมดเรียบร้อยแล้ว");
+        }
+      } catch (err) {
+        hideLoading();
+        alert("เกิดข้อผิดพลาด");
+      }
+    }
+
+    function exportCSV() {
+      if (!adminSubmissions.length) {
+        alert("ยังไม่มีข้อมูลสำหรับส่งออก");
+        return;
+      }
+      const headers = ["ชั้น", "เลขที่", "ชื่อ", "นามสกุล", "คะแนนรวม(15)", "ง่าย(5)", "กลาง(5)", "ยาก(5)", "เวลาที่ใช้(วินาที)", "วันเวลาที่ส่ง"];
+      const rows = adminSubmissions.map(s => [
+        s.classroom, s.studentNumber, `"${s.firstName}"`, `"${s.lastName}"`,
+        s.score, s.easyScore, s.mediumScore, s.hardScore, s.timeSpentSec, `"${formatDate(s.timestamp)}"`
+      ]);
+      const csv = "\uFEFF" + [headers.join(","), ...rows.map(r => r.join(","))].join("\n");
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `pretest_present_perfect_${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // =========================================================================
+    // 9. Utilities
+    // =========================================================================
+    function formatTime(sec) {
+      const m = String(Math.floor(sec / 60)).padStart(2, "0");
+      const s = String(sec % 60).padStart(2, "0");
+      return `${m}:${s}`;
+    }
+
+    function formatDate(iso) {
+      if (!iso) return "-";
+      const d = new Date(iso);
+      return d.toLocaleString("th-TH", { dateStyle: "short", timeStyle: "short" });
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
+    }
+
+    initApp();
+  </script>
+</body>
+</html>
